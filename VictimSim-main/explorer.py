@@ -49,8 +49,10 @@ class Explorer(AbstractAgent):
             return False
 
         decision = self.explorer_map.information(self.row, self.column)
+        print(decision)
         if decision is None:
             decision = self.stack.pop()
+            print(decision)
 
         if decision == "UP":
             dy = -1
@@ -88,7 +90,6 @@ class Explorer(AbstractAgent):
 
         # Test the result of the walk action
         if result == PhysAgent.BUMPED:
-            print("\nBUMPED\n")
             walls = 1  # build the map- to do
             # print(self.name() + ": wall or grid limit reached")
             if dy == 1:
@@ -101,7 +102,14 @@ class Explorer(AbstractAgent):
              self.explorer_map.draw(self.row, self.column, "NULL", self.column - 1, "LEFT")
 
         if result == PhysAgent.EXECUTED:
-            self.stack.push(decision)
+            if dy == 1:
+                self.stack.push("UP")
+            elif dy == -1:
+                self.stack.push("DOWN")
+            if dx == 1:
+                self.stack.push("LEFT")
+            elif dx == -1:
+                self.stack.push("RIGHT")
             # check for victim returns -1 if there is no victim or the sequential
             # the sequential number of a found victim
             seq = self.body.check_for_victim()
@@ -113,7 +121,6 @@ class Explorer(AbstractAgent):
             if dy == 1:
              self.explorer_map.draw(self.row, self.column, self.row + 1, self.column, "DOWN")
              self.row += 1
-             print("Row ", self.row)
             elif dy == -1:
              self.explorer_map.draw(self.row, self.column, self.row - 1, self.column, "UP")
              self.row -= 1

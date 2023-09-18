@@ -2,7 +2,6 @@ import sys
 import os
 import time
 
-
 ## importa classes
 from environment import Env
 from explorer import Explorer

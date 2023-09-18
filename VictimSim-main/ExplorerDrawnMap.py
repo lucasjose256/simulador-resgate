@@ -15,7 +15,6 @@ class ExplorerDrawnMap:
                 return "UP"
         elif isinstance(self.matrix_list[rowAUX][2], int):
             if self.matrix_list[rowAUX][2] == 0:
-                print("Downn")
                 return "DOWN"
         elif isinstance(self.matrix_list[rowAUX][3], int):
             if self.matrix_list[rowAUX][3] == 0:

@@ -254,7 +254,7 @@ class Explorer(AbstractAgent):
             elif dec == "diagonalDL":
                 dy = 1
                 dx = -1
-            elif dec == "diagonalUR":
+            elif dec == "diagonalDR":
                 dy = 1
                 dx = 1
 

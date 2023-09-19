@@ -144,9 +144,9 @@ class Explorer(AbstractAgent):
         #print("Antes do merge")
        # self.queueA.print_elements()
         self.queueA.merge_sort()
-        print("Depois do merge")
-        self.queueA.print_elements()
-        print("-------------------")
+       # print("Depois do merge")
+        #self.queueA.print_elements()
+        #print("-------------------")
 
     def caminhoA(self):
         self.explorer_map.remove_rows_with_incorrect_columns()
@@ -197,7 +197,7 @@ class Explorer(AbstractAgent):
             self.b = True
             self.caminhoA()
             self.finalQueue.enqueue([self.rowA, self.columnA])
-            self.alreadyA.print_elements()
+            #self.alreadyA.print_elements()
             print("-------------------------------")
             self.finalQueue.print_elements()
             self.finalStack.push([self.rowA, self.columnA])

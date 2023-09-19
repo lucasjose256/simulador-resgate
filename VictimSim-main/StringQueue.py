@@ -63,12 +63,25 @@ class StringQueue:
             i = j = k = 0
 
             while i < len(left_half) and j < len(right_half):
+                # Comparação considerando [2] como primeiro critério
                 if left_half[i][2] < right_half[j][2]:
                     arr[k] = left_half[i]
                     i += 1
-                else:
+                elif left_half[i][2] > right_half[j][2]:
                     arr[k] = right_half[j]
                     j += 1
+                else:
+                    # Em caso de empate em [2], comparar a soma de [0] e [1]
+                    sum_left = left_half[i][0] + left_half[i][1]
+                    sum_right = right_half[j][0] + right_half[j][1]
+
+                    if sum_left < sum_right:
+                        arr[k] = left_half[i]
+                        i += 1
+                    else:
+                        arr[k] = right_half[j]
+                        j += 1
+
                 k += 1
 
             while i < len(left_half):

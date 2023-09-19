@@ -47,12 +47,20 @@ class Explorer(AbstractAgent):
         self.finalStack = stack()
         self.finalDirectionsQueue = StringQueue()
 
+    #def score(self, lc):
+    #    l = lc[0]
+    #    c = lc[1]
+    #    return (min(abs(l), abs(c)) * 1.5 + (max(abs(l), abs(c)) - (min(abs(l), abs(c))))) + (
+    #                min(abs(l - self.rowA), abs(c - self.columnA)) * 1.5
+    #                + (max(abs(l - self.rowA), abs(c - self.columnA)) - min(abs(l - self.rowA), abs(c - self.columnA))))
+
     def score(self, lc):
         l = lc[0]
         c = lc[1]
         return (min(abs(l), abs(c)) * 1.5 + (max(abs(l), abs(c)) - (min(abs(l), abs(c))))) + (
                     min(abs(l - self.rowA), abs(c - self.columnA)) * 1.5
                     + (max(abs(l - self.rowA), abs(c - self.columnA)) - min(abs(l - self.rowA), abs(c - self.columnA))))
+
 
     def vizinhos(self, lc):
         l = lc[0]
@@ -189,6 +197,8 @@ class Explorer(AbstractAgent):
             self.b = True
             self.caminhoA()
             self.finalQueue.enqueue([self.rowA, self.columnA])
+            self.alreadyA.print_elements()
+            print("-------------------------------")
             self.finalQueue.print_elements()
             self.finalStack.push([self.rowA, self.columnA])
             aux1 = self.finalStack.pop()

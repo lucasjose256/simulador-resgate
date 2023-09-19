@@ -26,6 +26,7 @@ class Explorer(AbstractAgent):
         super().__init__(env, config_file)
 
         # Specific initialization for the rescuer
+        self.c = False
         self.resc = resc  # reference to the rescuer agent
         self.rtime = self.TLIM  # remaining time to explore
         self.explorer_map = ExplorerDrawnMap()
@@ -183,7 +184,7 @@ class Explorer(AbstractAgent):
         method at each cycle. Must be implemented in every agent"""
 
         # No more actions, time almost ended
-        if self.rtime < 10.0:
+        if self.c:
             # time to wake up the rescuer
             # pass the walls and the victims (here, they're empty)
             print(f"{self.NAME} I believe I've remaining time of {self.rtime:.1f}")
@@ -229,10 +230,12 @@ class Explorer(AbstractAgent):
                 aux1 = aux2
                 self.finalDirectionsQueue.enqueue(decisao)
 
-        if self.a and self.b:
+        if self.a and self.b and not self.finalDirectionsQueue.is_empty():
             dx = 0
             dy = 0
             dec = self.finalDirectionsQueue.dequeue()
+            if self.finalDirectionsQueue.is_empty():
+                self.c = True
             if dec == "UP":
                 dy = -1
                 dx = 0

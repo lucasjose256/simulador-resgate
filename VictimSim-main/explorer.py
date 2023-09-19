@@ -205,9 +205,9 @@ class Explorer(AbstractAgent):
 
             while not self.finalStack.is_empty():
                 aux2 = self.finalStack.pop()
-                print("aux1: ", aux1, "aux2: ", aux2)
+                #print("aux1: ", aux1, "aux2: ", aux2)
                 way = [aux1[0] - aux2[0], aux1[1] - aux2[1]]
-                print("aux1: ", aux1, "aux2: ", aux2, "way:", way)
+                #print("aux1: ", aux1, "aux2: ", aux2, "way:", way)
                 decisao = ""
                 if (way == [0, 1]):
                     decisao = "LEFT"

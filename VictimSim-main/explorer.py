@@ -348,11 +348,12 @@ class Explorer(AbstractAgent):
                 self.stack.push("RIGHT STACK")
             # check for victim returns -1 if there is no victim or the sequential
             # the sequential number of a found victim
+            aux = False
             seq = self.body.check_for_victim()
             if seq >= 0:
+                aux = True
                 vs = self.body.read_vital_signals(seq)
                 self.rtime -= self.COST_READ
-                self.adicionar_elementos([self.row, self.column , vs])
                 # print("exp: read vital signals of " + str(seq))
                 # print(vs)
             if dy == 1:
@@ -367,6 +368,8 @@ class Explorer(AbstractAgent):
             elif dx == -1:
                 self.explorer_map.draw(self.row, self.column, self.row, self.column - 1, "LEFT")
                 self.column -= 1
+            if(aux):
+                self.adicionar_elementos([self.row, self.column , vs])
         # print("-------------------------------------------\n")
         # self.explorer_map.print_matrix()
         # print("-------------------------------------------\n")

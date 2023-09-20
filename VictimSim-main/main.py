@@ -1,5 +1,6 @@
 import sys
 import os
+import threading
 import time
 
 
@@ -27,7 +28,11 @@ def main(data_folder_name):
 
     # Explorer needs to know rescuer to send the map
     # that's why rescuer is instatiated before
-    exp = Explorer(env, explorer_file, resc)
+    #Explorer(env, explorer_file, resc, 1)
+    Explorer(env, explorer_file, resc, 2)
+    #Explorer(env, explorer_file, resc, 3)
+    #Explorer(env, explorer_file, resc, 4)
+
 
     # Run the environment simulator
     env.run()

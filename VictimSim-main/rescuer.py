@@ -19,23 +19,30 @@ class Rescuer(AbstractAgent):
         super().__init__(env, config_file)
 
         # Specific initialization for the rescuer
-        self.plan = []              # a list of planned actions
-        self.rtime = self.TLIM      # for controlling the remaining time
-        
+        self.plan = []  # a list of planned actions
+        self.rtime = self.TLIM  # for controlling the remaining time
+
         # Starts in IDLE state.
         # It changes to ACTIVE when the map arrives
         self.body.set_state(PhysAgent.IDLE)
 
         # planning
         self.__planner()
-    
+        self.finalMap = []
+
+    def adicionar_coluna_sem_duplicatas(self, matriz):
+        coluna_0 = [linha[0] for linha in matriz]
+
+        for elemento in coluna_0:
+            if elemento not in self.finalMap:
+                self.finalMap.append(elemento)
+
     def go_save_victims(self, walls, victims):
         """ The explorer sends the map containing the walls and
         victims' location. The rescuer becomes ACTIVE. From now,
         the deliberate method is called by the environment"""
         self.body.set_state(PhysAgent.ACTIVE)
-        
-    
+
     def __planner(self):
         """ A private method that calculates the walk actions to rescue the
         victims. Further actions may be necessary and should be added in the
@@ -43,16 +50,16 @@ class Rescuer(AbstractAgent):
 
         # This is a off-line trajectory plan, each element of the list is
         # a pair dx, dy that do the agent walk in the x-axis and/or y-axis
-        self.plan.append((0,1))
-        self.plan.append((1,1))
-        self.plan.append((1,0))
-        self.plan.append((1,-1))
-        self.plan.append((0,-1))
-        self.plan.append((-1,0))
-        self.plan.append((-1,-1))
-        self.plan.append((-1,-1))
-        self.plan.append((-1,1))
-        self.plan.append((1,1))
+        self.plan.append((0, 1))
+        self.plan.append((1, 1))
+        self.plan.append((1, 0))
+        self.plan.append((1, -1))
+        self.plan.append((0, -1))
+        self.plan.append((-1, 0))
+        self.plan.append((-1, -1))
+        self.plan.append((-1, -1))
+        self.plan.append((-1, 1))
+        self.plan.append((1, 1))
 
     def deliberate(self) -> bool:
         """ This is the choice of the next action. The simulator calls this
@@ -63,7 +70,7 @@ class Rescuer(AbstractAgent):
 
         # No more actions to do
         if self.plan == []:  # empty list, no more actions to do
-           return False
+            return False
 
         # Takes the first action of the plan (walk action) and removes it from the plan
         dx, dy = self.plan.pop(0)
@@ -76,7 +83,6 @@ class Rescuer(AbstractAgent):
             # check if there is a victim at the current position
             seq = self.body.check_for_victim()
             if seq >= 0:
-                res = self.body.first_aid(seq) # True when rescued             
+                res = self.body.first_aid(seq)  # True when rescued
 
         return True
-

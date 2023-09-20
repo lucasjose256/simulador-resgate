@@ -192,7 +192,7 @@ class Explorer(AbstractAgent):
             # time to wake up the rescuer
             # pass the walls and the victims (here, they're empty)
             print(f"{self.NAME} I believe I've remaining time of {self.rtime:.1f}")
-            self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map)
+            self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
             self.resc.go_save_victims([], [])
             return False
        # elif self.c and not staticExplorer.checked():
@@ -233,7 +233,7 @@ class Explorer(AbstractAgent):
                     decisao = "diagonalDL"
                 elif (way == [-1, -1]):
                     decisao = "diagonalDR"
-                print("Decisao:", decisao)
+                #print("Decisao:", decisao)
                 aux1 = aux2
                 self.finalDirectionsQueue.enqueue(decisao)
 

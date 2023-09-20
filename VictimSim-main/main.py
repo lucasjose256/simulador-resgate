@@ -28,10 +28,10 @@ def main(data_folder_name):
 
     # Explorer needs to know rescuer to send the map
     # that's why rescuer is instatiated before
-    #Explorer(env, explorer_file, resc, 1)
+    Explorer(env, explorer_file, resc, 1)
     Explorer(env, explorer_file, resc, 2)
-    #Explorer(env, explorer_file, resc, 3)
-    #Explorer(env, explorer_file, resc, 4)
+    Explorer(env, explorer_file, resc, 3)
+    Explorer(env, explorer_file, resc, 4)
 
 
     # Run the environment simulator

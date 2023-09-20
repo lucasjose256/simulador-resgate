@@ -37,6 +37,17 @@ class Rescuer(AbstractAgent):
             if elemento not in self.finalMap:
                 self.finalMap.append(elemento)
 
+        print("------------------")
+        self.print_matrix()
+        print("------------------")
+
+
+    def print_matrix(self):
+        for row in self.finalMap:
+            for element in row:
+                print(element, end=" ")  # Imprime o elemento e um espaço em branco
+            print()
+
     def go_save_victims(self, walls, victims):
         """ The explorer sends the map containing the walls and
         victims' location. The rescuer becomes ACTIVE. From now,

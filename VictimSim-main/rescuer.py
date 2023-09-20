@@ -53,7 +53,7 @@ class Rescuer(AbstractAgent):
         self.plan.append((-1,-1))
         self.plan.append((-1,1))
         self.plan.append((1,1))
-        
+
     def deliberate(self) -> bool:
         """ This is the choice of the next action. The simulator calls this
         method at each reasonning cycle if the agent is ACTIVE.

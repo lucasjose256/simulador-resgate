@@ -50,6 +50,7 @@ class Explorer(AbstractAgent):
         self.finalStack = stack()
         self.finalDirectionsQueue = StringQueue()
         self.dir = direcao
+        self.vit = []
         #static agents += 1
 
     #def score(self, lc):
@@ -67,6 +68,9 @@ class Explorer(AbstractAgent):
                     + (max(abs(l - self.rowA), abs(c - self.columnA)) - min(abs(l - self.rowA), abs(c - self.columnA))))
 
 
+    def adicionar_elementos(self, vetor):
+        self.vit.append(vetor)
+        #print(self.vit)
     def vizinhos(self, lc):
         l = lc[0]
         c = lc[1]
@@ -194,6 +198,7 @@ class Explorer(AbstractAgent):
             print(f"{self.NAME} I believe I've remaining time of {self.rtime:.1f}")
             self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
             self.resc.go_save_victims([], [])
+            self.resc.adicionar_vitimas(self.vit)
             return False
        # elif self.c and not staticExplorer.checked():
         #    self.body.walk(0, 0)
@@ -347,6 +352,7 @@ class Explorer(AbstractAgent):
             if seq >= 0:
                 vs = self.body.read_vital_signals(seq)
                 self.rtime -= self.COST_READ
+                self.adicionar_elementos([self.row, self.column , vs])
                 # print("exp: read vital signals of " + str(seq))
                 # print(vs)
             if dy == 1:
@@ -366,3 +372,4 @@ class Explorer(AbstractAgent):
         # print("-------------------------------------------\n")
 
         return True
+

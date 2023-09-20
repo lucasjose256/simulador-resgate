@@ -29,6 +29,7 @@ class Rescuer(AbstractAgent):
         # planning
         self.__planner()
         self.finalMap = []
+        self.vitimas = []
 
     def adicionar_coluna_sem_duplicatas(self, matriz):
         coluna_0 = [linha[0] for linha in matriz]
@@ -38,7 +39,7 @@ class Rescuer(AbstractAgent):
                 self.finalMap.append(elemento)
 
         print("------------------")
-        self.print_matrix()
+        #self.print_matrix()
         print("------------------")
 
 
@@ -47,6 +48,10 @@ class Rescuer(AbstractAgent):
             for element in row:
                 print(element, end=" ")  # Imprime o elemento e um espaço em branco
             print()
+
+    def adicionar_vitimas(self, vetor):
+        self.vitimas.extend(vetor)
+        print(self.vitimas)
 
     def go_save_victims(self, walls, victims):
         """ The explorer sends the map containing the walls and

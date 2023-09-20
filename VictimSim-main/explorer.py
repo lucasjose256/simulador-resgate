@@ -13,10 +13,11 @@ from abc import ABC, abstractmethod
 
 from stack import stack
 from StringQueue import StringQueue
+from staticExplorer import staticExplorer
 
 
 class Explorer(AbstractAgent):
-    def __init__(self, env, config_file, resc):
+    def __init__(self, env, config_file, resc, direcao):
         """ Construtor do agente random on-line
         @param env referencia o ambiente
         @config_file: the absolute path to the explorer's config file
@@ -26,6 +27,7 @@ class Explorer(AbstractAgent):
         super().__init__(env, config_file)
 
         # Specific initialization for the rescuer
+        staticExplorer.addAgent()
         self.c = False
         self.resc = resc  # reference to the rescuer agent
         self.rtime = self.TLIM  # remaining time to explore
@@ -47,6 +49,9 @@ class Explorer(AbstractAgent):
         self.cb = 0
         self.finalStack = stack()
         self.finalDirectionsQueue = StringQueue()
+        self.dir = direcao
+        self.vit = []
+        #static agents += 1
 
     #def score(self, lc):
     #    l = lc[0]
@@ -63,6 +68,9 @@ class Explorer(AbstractAgent):
                     + (max(abs(l - self.rowA), abs(c - self.columnA)) - min(abs(l - self.rowA), abs(c - self.columnA))))
 
 
+    def adicionar_elementos(self, vetor):
+        self.vit.append(vetor)
+        #print(self.vit)
     def vizinhos(self, lc):
         l = lc[0]
         c = lc[1]
@@ -85,56 +93,56 @@ class Explorer(AbstractAgent):
         if self.explorer_map.find_row_with_right([l - 1, c - 1]) != "FALSE":
             if [l - 1, c - 1] != [0, 0]:
                 if (self.alreadyA.find_index_by_values(l - 1, c - 1)) == -1:
-                    self.queueA.enqueue([l - 1, c - 1, self.score([l - 1, c - 1]), l, c], self.alreadyA)
+                    self.queueA.enqueueNotEqual([l - 1, c - 1, self.score([l - 1, c - 1]), l, c], self.alreadyA)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l - 1, c]) != "FALSE":
             if [l - 1, c] != [0, 0]:
                 if (self.alreadyA.find_index_by_values(l - 1, c)) == -1:
-                    self.queueA.enqueue([l - 1, c, self.score([l - 1, c]), l, c], self.alreadyA)
+                    self.queueA.enqueueNotEqual([l - 1, c, self.score([l - 1, c]), l, c], self.alreadyA)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l - 1, c + 1]) != "FALSE":
             if [l - 1, c + 1] != [0, 0]:
                 if (self.alreadyA.find_index_by_values(l - 1, c + 1)) == -1:
-                    self.queueA.enqueue([l - 1, c + 1, self.score([l - 1, c + 1]), l, c], self.alreadyA)
+                    self.queueA.enqueueNotEqual([l - 1, c + 1, self.score([l - 1, c + 1]), l, c], self.alreadyA)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l, c - 1]) != "FALSE":
             if [l, c - 1] != [0, 0]:
                 if (self.alreadyA.find_index_by_values(l, c - 1)) == -1:
-                    self.queueA.enqueue([l, c - 1, self.score([l, c - 1]), l, c], self.alreadyA)
+                    self.queueA.enqueueNotEqual([l, c - 1, self.score([l, c - 1]), l, c], self.alreadyA)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l, c + 1]) != "FALSE":
             if [l, c + 1] != [0, 0]:
                 if (self.alreadyA.find_index_by_values(l, c + 1)) == -1:
-                    self.queueA.enqueue([l, c + 1, self.score([l, c + 1]), l, c], self.alreadyA)
+                    self.queueA.enqueueNotEqual([l, c + 1, self.score([l, c + 1]), l, c], self.alreadyA)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l + 1, c - 1]) != "FALSE":
             if [l + 1, c - 1] != [0, 0]:
                 if (self.alreadyA.find_index_by_values(l + 1, c - 1)) == -1:
-                    self.queueA.enqueue([l + 1, c - 1, self.score([l + 1, c - 1]), l, c], self.alreadyA)
+                    self.queueA.enqueueNotEqual([l + 1, c - 1, self.score([l + 1, c - 1]), l, c], self.alreadyA)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l + 1, c]) != "FALSE":
             if [l + 1, c] != [0, 0]:
                 if (self.alreadyA.find_index_by_values(l + 1, c)) == -1:
-                    self.queueA.enqueue([l + 1, c, self.score([l + 1, c]), l, c], self.alreadyA)
+                    self.queueA.enqueueNotEqual([l + 1, c, self.score([l + 1, c]), l, c], self.alreadyA)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l + 1, c + 1]) != "FALSE":
             if [l + 1, c + 1] != [0, 0]:
                 if (self.alreadyA.find_index_by_values(l + 1, c + 1)) == -1:
-                    self.queueA.enqueue([l + 1, c + 1, self.score([l + 1, c + 1]), l, c], self.alreadyA)
+                    self.queueA.enqueueNotEqual([l + 1, c + 1, self.score([l + 1, c + 1]), l, c], self.alreadyA)
             else:
                 self.index += 1
                 self.head = [l, c]
@@ -145,7 +153,7 @@ class Explorer(AbstractAgent):
         #print("Antes do merge")
        # self.queueA.print_elements()
         self.queueA.merge_sort()
-       # print("Depois do merge")
+        #print("Depois do merge")
         #self.queueA.print_elements()
         #print("-------------------")
 
@@ -188,9 +196,13 @@ class Explorer(AbstractAgent):
             # time to wake up the rescuer
             # pass the walls and the victims (here, they're empty)
             print(f"{self.NAME} I believe I've remaining time of {self.rtime:.1f}")
+            self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
             self.resc.go_save_victims([], [])
+            self.resc.adicionar_vitimas(self.vit)
             return False
-
+       # elif self.c and not staticExplorer.checked():
+        #    self.body.walk(0, 0)
+        #    return True
         if self.rtime < 200.0 and not self.a:
             self.rowA = self.row
             self.columnA = self.column
@@ -200,7 +212,7 @@ class Explorer(AbstractAgent):
             self.finalQueue.enqueue([self.rowA, self.columnA])
             #self.alreadyA.print_elements()
             print("-------------------------------")
-            self.finalQueue.print_elements()
+            #self.finalQueue.print_elements()
             self.finalStack.push([self.rowA, self.columnA])
             aux1 = self.finalStack.pop()
 
@@ -226,11 +238,12 @@ class Explorer(AbstractAgent):
                     decisao = "diagonalDL"
                 elif (way == [-1, -1]):
                     decisao = "diagonalDR"
-                print("Decisao:", decisao)
+                #print("Decisao:", decisao)
                 aux1 = aux2
                 self.finalDirectionsQueue.enqueue(decisao)
 
-        if self.a and self.b and not self.finalDirectionsQueue.is_empty():
+        if self.a and self.b:
+         if not self.finalDirectionsQueue.is_empty():
             dx = 0
             dy = 0
             dec = self.finalDirectionsQueue.dequeue()
@@ -269,8 +282,10 @@ class Explorer(AbstractAgent):
                 self.rtime -= self.COST_LINE
 
             return True
+         else:
+             return True
 
-        decision = self.explorer_map.information(self.row, self.column)
+        decision = self.explorer_map.information(self.row, self.column, self.dir)
         # print(decision)
         if decision is None:
             decision = self.stack.pop()
@@ -333,8 +348,10 @@ class Explorer(AbstractAgent):
                 self.stack.push("RIGHT STACK")
             # check for victim returns -1 if there is no victim or the sequential
             # the sequential number of a found victim
+            aux = False
             seq = self.body.check_for_victim()
             if seq >= 0:
+                aux = True
                 vs = self.body.read_vital_signals(seq)
                 self.rtime -= self.COST_READ
                 # print("exp: read vital signals of " + str(seq))
@@ -351,8 +368,11 @@ class Explorer(AbstractAgent):
             elif dx == -1:
                 self.explorer_map.draw(self.row, self.column, self.row, self.column - 1, "LEFT")
                 self.column -= 1
+            if(aux):
+                self.adicionar_elementos([self.row, self.column , vs])
         # print("-------------------------------------------\n")
         # self.explorer_map.print_matrix()
         # print("-------------------------------------------\n")
 
         return True
+

@@ -2,14 +2,18 @@ class StringQueue:
     def __init__(self):
         self.queue = []
 
-    def enqueue(self, string, blacklist_queue=None):
-       # if blacklist_queue and string in blacklist_queue.queue:
+    def enqueueNotEqual(self, string, blacklist_queue=None):
+        # if blacklist_queue and string in blacklist_queue.queue:
         #    print(f"Elemento '{string}' está na blacklist e não pode ser adicionado.")
-        #if blacklist_queue is not None:
-         #   if (blacklist_queue.find_index_by_values(string[0], string[1])) == -1:
+        # if blacklist_queue is not None:
+        #   if (blacklist_queue.find_index_by_values(string[0], string[1])) == -1:
         #        return None
-        #elif string not in self.queue:
+        # elif string not in self.queue:
+        if string not in self.queue:
             self.queue.append(string)
+
+    def enqueue(self, string, blacklist_queue=None):
+        self.queue.append(string)
 
     def dequeue(self):
         if not self.is_empty():
@@ -78,9 +82,21 @@ class StringQueue:
                     if sum_left < sum_right:
                         arr[k] = left_half[i]
                         i += 1
-                    else:
+                    elif sum_left > sum_right:
                         arr[k] = right_half[j]
                         j += 1
+                    else:
+                        # Em caso de empate em [2] e soma de [0] e [1], verificar [0] e [1]
+                        if left_half[i][0] == right_half[j][0]:
+                            arr[k] = left_half[i]
+                            i += 1
+                        elif left_half[i][1] == right_half[j][1]:
+                            arr[k] = right_half[j]
+                            j += 1
+                        else:
+                            # Se tudo empatar, manter a ordem original
+                            arr[k] = left_half[i]
+                            i += 1
 
                 k += 1
 
@@ -95,5 +111,3 @@ class StringQueue:
                 k += 1
 
         return arr
-
-

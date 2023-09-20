@@ -45,7 +45,8 @@ class Env:
         self.sum_gravity = 0   # sum of all gravity values for peg and psg calculation
         self.signals = []      # positional: the vital signals of the victims [[i,s1,...,s5,g,l],...]
         self.found   = [[]]    # positional: Physical agents that found each victim [[ag1] [ag2, ag3], ...] ag1 found vict 0, ag2 and 3, vict 1, ... 
-        self.saved   = [[]]    # positional: Physical agents that saved each victim 
+        self.saved   = [[]]    # positional: Physical agents that saved each victim
+        self.arriveD = 0
         
         # Read the environment config file
         self.__read_config()
@@ -112,6 +113,7 @@ class Env:
         # Set up with the trace color of the last physical agent who visited the cell
         self.visited = [[(0,0,0) for y in range(self.dic["GRID_HEIGHT"])] for x in range(self.dic["GRID_WIDTH"])]
         
+
 
     
     def __read_config(self):

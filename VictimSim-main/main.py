@@ -37,7 +37,7 @@ def main(data_folder_name):
     # Run the environment simulator
     env.run()
     
-        
+
 if __name__ == '__main__':
     """ To get data from a different folder than the default called data
     pass it by the argument line"""
@@ -45,6 +45,6 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         data_folder_name = sys.argv[1]
     else:
-        data_folder_name = os.path.join("datasets", "data_20x20_42vic")
+        data_folder_name = os.path.join("datasets", "data_12x12_10vic")
         
     main(data_folder_name)

@@ -5,6 +5,7 @@
 import sys
 import os
 import random
+import math
 
 from ExplorerDrawnMap import ExplorerDrawnMap
 from abstract_agent import AbstractAgent
@@ -51,6 +52,8 @@ class Explorer(AbstractAgent):
         self.finalDirectionsQueue = StringQueue()
         self.dir = direcao
         self.vit = []
+        self.TIMEMAX = 1
+        self.contRow = 1
         #static agents += 1
 
     #def score(self, lc):
@@ -203,7 +206,7 @@ class Explorer(AbstractAgent):
        # elif self.c and not staticExplorer.checked():
         #    self.body.walk(0, 0)
         #    return True
-        if self.rtime < 200.0 and not self.a:
+        if self.rtime < ((self.TIMEMAX)*((1 + (0.054*self.row + 0.054*self.column))) + 25 + 20*((self.TIMEMAX/66))) and not self.a:
             self.rowA = self.row
             self.columnA = self.column
             self.a = True
@@ -318,12 +321,16 @@ class Explorer(AbstractAgent):
 
         # Moves the body to another position
         result = self.body.walk(dx, dy)
+        aux3 = self.explorer_map.contar_linhas_colunas()
         # Update remaining time
         if dx != 0 and dy != 0:
             self.rtime -= self.COST_DIAG
+            self.TIMEMAX += 0.51*(aux3 - self.contRow)
         else:
             self.rtime -= self.COST_LINE
+            self.TIMEMAX += 0.51*(aux3 - self.contRow)
 
+        self.contRow = aux3
         # Test the result of the walk action
         if result == PhysAgent.BUMPED:
             walls = 1  # build the map- to do

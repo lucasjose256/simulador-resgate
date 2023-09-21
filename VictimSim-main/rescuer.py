@@ -51,7 +51,7 @@ class Rescuer(AbstractAgent):
 
     def adicionar_vitimas(self, vetor):
         self.vitimas.extend(vetor)
-        print(self.vitimas)
+        #print(self.vitimas)
 
     def go_save_victims(self, walls, victims):
         """ The explorer sends the map containing the walls and

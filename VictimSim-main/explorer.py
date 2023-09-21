@@ -54,6 +54,7 @@ class Explorer(AbstractAgent):
         self.vit = []
         self.TIMEMAX = 1
         self.contRow = 1
+        self.d = False
         #static agents += 1
 
     #def score(self, lc):
@@ -193,16 +194,21 @@ class Explorer(AbstractAgent):
     def deliberate(self) -> bool:
         """ The agent chooses the next action. The simulator calls this
         method at each cycle. Must be implemented in every agent"""
-
-        # No more actions, time almost ended
-        if self.c:
-            # time to wake up the rescuer
-            # pass the walls and the victims (here, they're empty)
-            print(f"{self.NAME} I believe I've remaining time of {self.rtime:.1f}")
+        if self.d and staticExplorer.checked():
             self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
             self.resc.go_save_victims([], [])
             self.resc.adicionar_vitimas(self.vit)
             return False
+        elif (self.d):
+            return True
+        # No more actions, time almost ended
+        if self.c:
+            # time to wake up the rescuer
+            # pass the walls and the victims (here, they're empty)
+            staticExplorer.agentArrived()
+            self.d = True
+            print(f"{self.NAME} I believe I've remaining time of {self.rtime:.1f}")
+            return True
        # elif self.c and not staticExplorer.checked():
         #    self.body.walk(0, 0)
         #    return True

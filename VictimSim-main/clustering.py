@@ -1,4 +1,5 @@
 import random
+import staticExplorer
 
 class clustering:
     vitimas_sem_duplicatas = []
@@ -6,7 +7,15 @@ class clustering:
     atribuicoes = []
     k = 4
     max_iteracoes = 100
+    calculado = False
 
+@staticmethod
+def clustering_calculado():
+    clustering.calculado = True
+
+@staticmethod
+def ret_calculado():
+    return clustering.calculado
 
 @staticmethod
 def ret_centroides():
@@ -72,14 +81,17 @@ def atualizar_centroides(pontos, atribuicoes, k):
 # Função para executar o algoritmo K-means
 @staticmethod
 def k_means():
-    pontos = [(clustering.vitimas_sem_duplicatas[i][0], clustering.vitimas_sem_duplicatas[i][1]) for i in
-                         range(len(clustering.vitimas_sem_duplicatas))]
+    pontos = [(staticExplorer.staticExplorer.returnVitFinal()[i][0], staticExplorer.staticExplorer.returnVitFinal()[i][1]) for i in
+                         range(len(staticExplorer.staticExplorer.returnVitFinal()))]
     # Inicialização aleatória dos centroides
+    while len(pontos) < clustering.k:
+        clustering.k -= 1
+
     clustering.centroides = random.sample(pontos, clustering.k)
     for _ in range(clustering.max_iteracoes):
         # Atribuir cada ponto ao centróide mais próximo
         clustering.atribuicoes = [encontrar_centroide_mais_proximo(pontos, clustering.centroides)
-                                  for pontos in pontos]
+                                    for pontos in pontos]
         # Atualizar os centroides
         novos_centroides = atualizar_centroides(pontos, clustering.atribuicoes, clustering.k)
 

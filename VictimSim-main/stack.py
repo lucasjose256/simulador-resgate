@@ -22,3 +22,21 @@ class stack:
 
     def size(self):
         return len(self.stack)
+
+    def copiar_pilha(pilha_original):
+        pilha_copia = stack()  # Cria uma nova pilha vazia (uma instância da classe stack)
+
+        # Copia os elementos da pilha original para a pilha de cópia
+        for elemento in pilha_original.stack:
+            pilha_copia.push(elemento)
+
+        return pilha_copia
+
+    # Função para esvaziar uma pilha
+    def esvaziar_pilha(pilha):
+        while not pilha.is_empty():
+            pilha.pop()
+
+    def imprimir_pilha(self):
+        for elemento in self.stack:
+            print(elemento)

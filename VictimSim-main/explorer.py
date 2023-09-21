@@ -75,6 +75,7 @@ class Explorer(AbstractAgent):
     def adicionar_elementos(self, vetor):
         self.vit.append(vetor)
         #print(self.vit)
+
     def vizinhos(self, lc):
         l = lc[0]
         c = lc[1]
@@ -195,9 +196,11 @@ class Explorer(AbstractAgent):
         """ The agent chooses the next action. The simulator calls this
         method at each cycle. Must be implemented in every agent"""
         if self.d and staticExplorer.checked():
-            self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
+            # self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
+            staticExplorer.addFinalMap(self.explorer_map.matrix_list)
             self.resc.go_save_victims([], [])
-            self.resc.adicionar_vitimas(self.vit)
+            staticExplorer.addVitimas(self.vit)
+            #self.resc.adicionar_vitimas(self.vit)
             return False
         elif (self.d):
             return True

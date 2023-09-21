@@ -29,7 +29,7 @@ class AbstractAgent:
         self.COST_READ = 0.0        # cost to read a victim's vital sign
         self.COST_FIRST_AID = 0.0   # cost to drop the first aid package to a victim
         self.COLOR = (100,100,100)  # color of the agent
-        self.TRACE_COLOR = (140,140,140) # color for the visited cells
+        self.TRACE_COLOR = (140,140,140) # color for the visited cellsj
         
         # Read agents config file for controlling time
         with open(config_file, "r") as file:

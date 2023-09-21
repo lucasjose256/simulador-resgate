@@ -29,6 +29,7 @@ class Explorer(AbstractAgent):
         # Specific initialization for the rescuer
         staticExplorer.addAgent()
         self.c = False
+        self.d = False
         self.resc = resc  # reference to the rescuer agent
         self.rtime = self.TLIM  # remaining time to explore
         self.explorer_map = ExplorerDrawnMap()
@@ -191,15 +192,26 @@ class Explorer(AbstractAgent):
         """ The agent chooses the next action. The simulator calls this
         method at each cycle. Must be implemented in every agent"""
 
+        if self.d and staticExplorer.checked():
+            #self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
+            self.resc.go_save_victims([], [])
+            #self.resc.adicionar_vitimas(self.vit)
+            return False
+        elif (self.d):
+            return True
+
         # No more actions, time almost ended
-        if self.c:
+        if self.c: # True se o Explorer está na base pelo A*
             # time to wake up the rescuer
             # pass the walls and the victims (here, they're empty)
+            self.d = True
+            staticExplorer.agentArrived()
             print(f"{self.NAME} I believe I've remaining time of {self.rtime:.1f}")
-            self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
-            self.resc.go_save_victims([], [])
+            staticExplorer.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
             self.resc.adicionar_vitimas(self.vit)
-            return False
+            #print(self.vit)
+
+            return True
        # elif self.c and not staticExplorer.checked():
         #    self.body.walk(0, 0)
         #    return True

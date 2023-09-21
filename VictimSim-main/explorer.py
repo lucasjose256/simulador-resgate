@@ -170,16 +170,16 @@ class Explorer(AbstractAgent):
             self.vizinhos(self.verde.get_element_by_index(0))
             #print("loop")
 
-        self.la = self.head[0]
-        self.cb = self.head[1]
-        self.finalStack.push([0, 0])
+        self.la = self.head[0] #LINHA DO NO QUE CONECTA [0, 0]
+        self.cb = self.head[1] #COLUNA DO NO QUE CONECTA [0, 0]
+        self.finalStack.push([0, 0]) #IGNORA POR ENQUANTO
         self.finalQueue.enqueue([0, 0])
         while self.la != self.rowA or self.cb != self.columnA:
             # print("lugar", self.la, self.rowA)
             self.finalQueue.enqueue([self.la, self.cb])
-            self.finalStack.push([self.la, self.cb])
+            self.finalStack.push([self.la, self.cb]) #IGNORA POR ENQUANTO
             self.loop()
-        #print("final")
+        self.finalQueue.enqueue([self.rowA, self.columnA])
         #self.finalQueue.print_elements()
 
     def loop(self):
@@ -222,7 +222,9 @@ class Explorer(AbstractAgent):
             self.a = True #FLAG PARA AVISAR PARA IF PROXIMO QUE COMEÇOU A* em DELIBERATE
             self.b = True #FLAG PARA AVISAR PARA IF PROXIMO QUE COMEÇOU A* em DELIBERATE
             self.caminhoA() #COMEÇA PRIMEIRA PARTE DO A* DE EXPLORAR CAMINHOS COM BASE NO "SCORE"
-            self.finalQueue.enqueue([self.rowA, self.columnA])
+
+            #PARA FAZER O ALGORITMO ANALISAR AS 5 LINHAS ACIMA + CAMINHOA() + VIZINHOS() + LOOPS()
+
             #---------------------------------------------------------------------------------------------------
 
 

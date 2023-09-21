@@ -151,9 +151,9 @@ class Explorer(AbstractAgent):
                 self.index += 1
                 self.head = [l, c]
 
-       # print("-----------------ALREADY")
+        #print("-----------------ALREADY")
         #self.alreadyA.print_elements()
-       # print("-------------------")
+        #print("-------------------")
         #print("Antes do merge")
        # self.queueA.print_elements()
         self.queueA.merge_sort()
@@ -214,15 +214,21 @@ class Explorer(AbstractAgent):
         #    return True
 
         if self.rtime < ((self.TIMEMAX)*((1 + (0.04*abs(self.row) + 0.04*abs(self.column)))) + 25 + 30*((self.TIMEMAX/66))) and not self.a:
-            self.rowA = self.row
-            self.columnA = self.column
-            self.a = True
-            self.b = True
-            self.caminhoA()
+            self.rowA = self.row   #SALVA A LINHA QUE ELE ESTÁ NO MOMENTO QUE PAROU O DFS ONLINE
+            self.columnA = self.column   #SALVA A COLUNA QUE ELE ESTÁ NO MOMENTO QUE PAROU O DFS ONLINE
+            self.a = True #FLAG PARA AVISAR PARA IF PROXIMO QUE COMEÇOU A* em DELIBERATE
+            self.b = True #FLAG PARA AVISAR PARA IF PROXIMO QUE COMEÇOU A* em DELIBERATE
+            print(self.rowA, self.columnA)
+            self.caminhoA() #COMEÇA PRIMEIRA PARTE DO A* DE EXPLORAR CAMINHOS COM BASE NO "SCORE"
+
+
+
+
             self.finalQueue.enqueue([self.rowA, self.columnA])
-            #self.alreadyA.print_elements()
+            print(self.head)
+            self.alreadyA.print_elements()
             print("-------------------------------")
-            #self.finalQueue.print_elements()
+            self.finalQueue.print_elements()
             self.finalStack.push([self.rowA, self.columnA])
             aux1 = self.finalStack.pop()
 

@@ -13,61 +13,61 @@ class ExplorerDrawnMap:
     def information(self, current_positionROW, current_positionCOLUMN, direcao):
         rowAUX = self.find_row_with_right([current_positionROW, current_positionCOLUMN])
         if(direcao == 1):
-            if isinstance(self.matrix_list[rowAUX][1], int):
+            if isinstance(self.matrix_list[rowAUX][3], int):
+               if self.matrix_list[rowAUX][3] == 0:
+                    return "RIGHT"
+            elif isinstance(self.matrix_list[rowAUX][1], int):
                if self.matrix_list[rowAUX][1] == 0:
                     return "UP"
             elif isinstance(self.matrix_list[rowAUX][2], int):
                if self.matrix_list[rowAUX][2] == 0:
                 # print("Downn")
                     return "DOWN"
-            elif isinstance(self.matrix_list[rowAUX][3], int):
-               if self.matrix_list[rowAUX][3] == 0:
-                    return "RIGHT"
             elif isinstance(self.matrix_list[rowAUX][4], int):
                if self.matrix_list[rowAUX][4] == 0:
                     return "LEFT"
         elif(direcao == 2):
-            if isinstance(self.matrix_list[rowAUX][2], int):
-               if self.matrix_list[rowAUX][2] == 0:
-                # print("Downn")
-                    return "DOWN"
             if isinstance(self.matrix_list[rowAUX][1], int):
                if self.matrix_list[rowAUX][1] == 0:
                     return "UP"
-            elif isinstance(self.matrix_list[rowAUX][3], int):
-               if self.matrix_list[rowAUX][3] == 0:
-                    return "RIGHT"
             elif isinstance(self.matrix_list[rowAUX][4], int):
                if self.matrix_list[rowAUX][4] == 0:
                     return "LEFT"
+            elif isinstance(self.matrix_list[rowAUX][3], int):
+               if self.matrix_list[rowAUX][3] == 0:
+                    return "RIGHT"
+            elif isinstance(self.matrix_list[rowAUX][2], int):
+               if self.matrix_list[rowAUX][2] == 0:
+                # print("Downn")
+                    return "DOWN"
         elif(direcao == 3):
             if isinstance(self.matrix_list[rowAUX][3], int):
                if self.matrix_list[rowAUX][3] == 0:
                     return "RIGHT"
-            if isinstance(self.matrix_list[rowAUX][2], int):
+            elif isinstance(self.matrix_list[rowAUX][2], int):
                if self.matrix_list[rowAUX][2] == 0:
                 # print("Downn")
                     return "DOWN"
-            if isinstance(self.matrix_list[rowAUX][1], int):
+            elif isinstance(self.matrix_list[rowAUX][1], int):
                if self.matrix_list[rowAUX][1] == 0:
                     return "UP"
             elif isinstance(self.matrix_list[rowAUX][4], int):
                if self.matrix_list[rowAUX][4] == 0:
                     return "LEFT"
         elif(direcao == 4):
-            if isinstance(self.matrix_list[rowAUX][1], int):
-               if self.matrix_list[rowAUX][1] == 0:
-                    return "UP"
-            if isinstance(self.matrix_list[rowAUX][4], int):
-               if self.matrix_list[rowAUX][4] == 0:
-                    return "LEFT"
-            if isinstance(self.matrix_list[rowAUX][3], int):
-               if self.matrix_list[rowAUX][3] == 0:
-                    return "RIGHT"
             if isinstance(self.matrix_list[rowAUX][2], int):
                if self.matrix_list[rowAUX][2] == 0:
                 # print("Downn")
                     return "DOWN"
+            elif isinstance(self.matrix_list[rowAUX][3], int):
+               if self.matrix_list[rowAUX][3] == 0:
+                    return "RIGHT"
+            elif isinstance(self.matrix_list[rowAUX][1], int):
+               if self.matrix_list[rowAUX][1] == 0:
+                    return "UP"
+            elif isinstance(self.matrix_list[rowAUX][4], int):
+               if self.matrix_list[rowAUX][4] == 0:
+                    return "LEFT"
 
     def draw(self, later_positionROW, later_positionCOLUMN, current_positionROW, current_positionCOLUMN, decision):
         rowAUX = self.find_row_with_right([later_positionROW, later_positionCOLUMN])

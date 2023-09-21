@@ -424,6 +424,7 @@ class Rescuer(AbstractAgent):
                 atribuicoes_finais = clustering.ret_atribuicoes()
                 vitimas_sem_duplicatas = staticExplorer.returnVitFinal()
 
+                print("-------------------------------------------")
                 print(f"RESCUER: {self.clt}")
                 for i, vitimas in enumerate(vitimas_sem_duplicatas):
                     print(f"Vítima {i + 1}: ({vitimas[0]}, {vitimas[1]})")

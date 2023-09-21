@@ -196,7 +196,8 @@ class Explorer(AbstractAgent):
         """ The agent chooses the next action. The simulator calls this
         method at each cycle. Must be implemented in every agent"""
         if self.d and staticExplorer.checked():
-            # self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)
+            # self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)]
+            print("Decisao: ", self.dir, "Vitimas: ", len(self.vit))
             staticExplorer.addFinalMap(self.explorer_map.matrix_list)
             self.resc.go_save_victims([], [])
             staticExplorer.addVitimas(self.vit)
@@ -216,7 +217,7 @@ class Explorer(AbstractAgent):
         #    self.body.walk(0, 0)
         #    return True
 
-        if self.rtime < ((self.TIMEMAX)*((1 + (0.04*abs(self.row) + 0.04*abs(self.column)))) + 25 + 30*((self.TIMEMAX/66))) and not self.a:
+        if self.rtime < ((min(abs(self.row), abs(self.column)) * 1.5 + (max(abs(self.row), abs(self.column)) - (min(abs(self.row), abs(self.column))))))*2 and not self.a:
 
 
             #ALGORITMO A*
@@ -345,10 +346,10 @@ class Explorer(AbstractAgent):
         # Update remaining time
         if dx != 0 and dy != 0:
             self.rtime -= self.COST_DIAG
-            self.TIMEMAX += 0.375*(aux3 - self.contRow)
+            self.TIMEMAX += 0.23*(aux3 - self.contRow)
         else:
             self.rtime -= self.COST_LINE
-            self.TIMEMAX += 0.375*(aux3 - self.contRow)
+            self.TIMEMAX += 0.1*(aux3 - self.contRow)
 
         self.contRow = aux3
         # Test the result of the walk action

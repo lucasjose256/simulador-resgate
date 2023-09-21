@@ -206,7 +206,8 @@ class Explorer(AbstractAgent):
        # elif self.c and not staticExplorer.checked():
         #    self.body.walk(0, 0)
         #    return True
-        if self.rtime < ((self.TIMEMAX)*((1 + (0.054*self.row + 0.054*self.column))) + 25 + 20*((self.TIMEMAX/66))) and not self.a:
+
+        if self.rtime < ((self.TIMEMAX)*((1 + (0.04*abs(self.row) + 0.04*abs(self.column)))) + 25 + 30*((self.TIMEMAX/66))) and not self.a:
             self.rowA = self.row
             self.columnA = self.column
             self.a = True
@@ -325,10 +326,10 @@ class Explorer(AbstractAgent):
         # Update remaining time
         if dx != 0 and dy != 0:
             self.rtime -= self.COST_DIAG
-            self.TIMEMAX += 0.51*(aux3 - self.contRow)
+            self.TIMEMAX += 0.375*(aux3 - self.contRow)
         else:
             self.rtime -= self.COST_LINE
-            self.TIMEMAX += 0.51*(aux3 - self.contRow)
+            self.TIMEMAX += 0.375*(aux3 - self.contRow)
 
         self.contRow = aux3
         # Test the result of the walk action

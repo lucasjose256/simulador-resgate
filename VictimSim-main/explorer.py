@@ -29,22 +29,22 @@ class Explorer(AbstractAgent):
 
         # Specific initialization for the rescuer
         staticExplorer.addAgent()
-        self.c = False
+        self.c = False #FLAG QUE AVISA QUE O EXPLORADOR CHEGOU NA BASE NO FINAL DO ALGORITMO A*
         self.resc = resc  # reference to the rescuer agent
         self.rtime = self.TLIM  # remaining time to explore
         self.explorer_map = ExplorerDrawnMap()
         self.explorer_map.draw(0, 0, 0, 0, "NONE")
         self.row = 0
         self.column = 0
-        self.rowA = 0
-        self.columnA = 0
+        self.rowA = 0 #SALVA A POSIÇAO DE INICIO PARA A*
+        self.columnA = 0 #SALVA A POSIÇAO DE INICIO PARA A*
         self.stack = stack()
-        self.a = False
+        self.a = False #FLAG PARA AVISAR PARA IF PROXIMO QUE COMEÇOU A* em DELIBERATE E QUE NAO PODE IR PARA O CODIGO DFS ONLINE
         self.verde = StringQueue()
         self.vermelho = StringQueue()
-        self.head = 0
-        self.index = 0
-        self.b = False
+        self.head = 0 #SALVA O NO QUE ENCONTRO [0, 0] EM A*
+        self.index = 0 #FLAG PARA DIZER SE [0, 0] FOI ENCONTRADO EM A*
+        self.b = False #FLAG PARA AVISAR PARA IF PROXIMO QUE COMEÇOU A* em DELIBERATE E QUE NAO PODE IR PARA O CODIGO DFS ONLINE
         self.finalQueue = StringQueue()
         self.la = 0
         self.cb = 0
@@ -54,7 +54,7 @@ class Explorer(AbstractAgent):
         self.vit = []
         self.TIMEMAX = 1
         self.contRow = 1
-        self.d = False
+        self.d = False #FLAG QUE REPETE A FUNÇAO DELIBERATE ATE TODOS EXPLORADORES CHEGARAM AI CHAMANDO OS RESCUERS
         #static agents += 1
 
     #def score(self, lc):
@@ -153,13 +153,13 @@ class Explorer(AbstractAgent):
 
         #print("-----------------ALREADY")
         #self.alreadyA.print_elements()
-        #print("-------------------")
-        #print("Antes do merge")
-       # self.queueA.print_elements()
+        print("-------------------")
+        print("Antes do merge")
+        self.verde.print_elements()
         self.verde.merge_sort()
-        #print("Depois do merge")
-        #self.queueA.print_elements()
-        #print("-------------------")
+        print("Depois do merge")
+        self.verde.print_elements()
+        print("-------------------")
 
     def caminhoA(self):
         self.explorer_map.remove_rows_with_incorrect_columns()

@@ -144,6 +144,10 @@ class ExplorerDrawnMap:
                 print(f"Tipo: {element_type}", end="\t")
             print()
 
+    def contar_linhas_colunas(self):
+        num_linhas = len(self.matrix_list)
+
+        return num_linhas
 
 def main():
     mapa = ExplorerDrawnMap()

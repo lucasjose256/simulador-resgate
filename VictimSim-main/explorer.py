@@ -40,8 +40,8 @@ class Explorer(AbstractAgent):
         self.columnA = 0
         self.stack = stack()
         self.a = False
-        self.queueA = StringQueue()
-        self.alreadyA = StringQueue()
+        self.verde = StringQueue()
+        self.vermelho = StringQueue()
         self.head = 0
         self.index = 0
         self.b = False
@@ -87,66 +87,66 @@ class Explorer(AbstractAgent):
             #self.queueA.print_elements()
             # print("Achou ", self.queueA.get_element_by_index(self.queueA.find_index_by_values(l, c)))
             # print("-----------")
-            self.vet = self.queueA.get_element_by_index(self.queueA.find_index_by_values(l, c))
+            self.vet = self.verde.get_element_by_index(self.verde.find_index_by_values(l, c))
             # print("Achou vet ", self.vet)
-            self.alreadyA.enqueue([l, c, self.vet[3], self.vet[4]])
-            self.queueA.dequeue()
+            self.vermelho.enqueue([l, c, self.vet[3], self.vet[4]])
+            self.verde.dequeue()
         else:
-            self.queueA.dequeue()
+            self.verde.dequeue()
         fila = StringQueue()
         if self.explorer_map.find_row_with_right([l - 1, c - 1]) != "FALSE":
             if [l - 1, c - 1] != [0, 0]:
-                if (self.alreadyA.find_index_by_values(l - 1, c - 1)) == -1:
-                    self.queueA.enqueueNotEqual([l - 1, c - 1, self.score([l - 1, c - 1]), l, c], self.alreadyA)
+                if (self.vermelho.find_index_by_values(l - 1, c - 1)) == -1:
+                    self.verde.enqueueNotEqual([l - 1, c - 1, self.score([l - 1, c - 1]), l, c], self.vermelho)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l - 1, c]) != "FALSE":
             if [l - 1, c] != [0, 0]:
-                if (self.alreadyA.find_index_by_values(l - 1, c)) == -1:
-                    self.queueA.enqueueNotEqual([l - 1, c, self.score([l - 1, c]), l, c], self.alreadyA)
+                if (self.vermelho.find_index_by_values(l - 1, c)) == -1:
+                    self.verde.enqueueNotEqual([l - 1, c, self.score([l - 1, c]), l, c], self.vermelho)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l - 1, c + 1]) != "FALSE":
             if [l - 1, c + 1] != [0, 0]:
-                if (self.alreadyA.find_index_by_values(l - 1, c + 1)) == -1:
-                    self.queueA.enqueueNotEqual([l - 1, c + 1, self.score([l - 1, c + 1]), l, c], self.alreadyA)
+                if (self.vermelho.find_index_by_values(l - 1, c + 1)) == -1:
+                    self.verde.enqueueNotEqual([l - 1, c + 1, self.score([l - 1, c + 1]), l, c], self.vermelho)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l, c - 1]) != "FALSE":
             if [l, c - 1] != [0, 0]:
-                if (self.alreadyA.find_index_by_values(l, c - 1)) == -1:
-                    self.queueA.enqueueNotEqual([l, c - 1, self.score([l, c - 1]), l, c], self.alreadyA)
+                if (self.vermelho.find_index_by_values(l, c - 1)) == -1:
+                    self.verde.enqueueNotEqual([l, c - 1, self.score([l, c - 1]), l, c], self.vermelho)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l, c + 1]) != "FALSE":
             if [l, c + 1] != [0, 0]:
-                if (self.alreadyA.find_index_by_values(l, c + 1)) == -1:
-                    self.queueA.enqueueNotEqual([l, c + 1, self.score([l, c + 1]), l, c], self.alreadyA)
+                if (self.vermelho.find_index_by_values(l, c + 1)) == -1:
+                    self.verde.enqueueNotEqual([l, c + 1, self.score([l, c + 1]), l, c], self.vermelho)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l + 1, c - 1]) != "FALSE":
             if [l + 1, c - 1] != [0, 0]:
-                if (self.alreadyA.find_index_by_values(l + 1, c - 1)) == -1:
-                    self.queueA.enqueueNotEqual([l + 1, c - 1, self.score([l + 1, c - 1]), l, c], self.alreadyA)
+                if (self.vermelho.find_index_by_values(l + 1, c - 1)) == -1:
+                    self.verde.enqueueNotEqual([l + 1, c - 1, self.score([l + 1, c - 1]), l, c], self.vermelho)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l + 1, c]) != "FALSE":
             if [l + 1, c] != [0, 0]:
-                if (self.alreadyA.find_index_by_values(l + 1, c)) == -1:
-                    self.queueA.enqueueNotEqual([l + 1, c, self.score([l + 1, c]), l, c], self.alreadyA)
+                if (self.vermelho.find_index_by_values(l + 1, c)) == -1:
+                    self.verde.enqueueNotEqual([l + 1, c, self.score([l + 1, c]), l, c], self.vermelho)
             else:
                 self.index += 1
                 self.head = [l, c]
         if self.explorer_map.find_row_with_right([l + 1, c + 1]) != "FALSE":
             if [l + 1, c + 1] != [0, 0]:
-                if (self.alreadyA.find_index_by_values(l + 1, c + 1)) == -1:
-                    self.queueA.enqueueNotEqual([l + 1, c + 1, self.score([l + 1, c + 1]), l, c], self.alreadyA)
+                if (self.vermelho.find_index_by_values(l + 1, c + 1)) == -1:
+                    self.verde.enqueueNotEqual([l + 1, c + 1, self.score([l + 1, c + 1]), l, c], self.vermelho)
             else:
                 self.index += 1
                 self.head = [l, c]
@@ -156,18 +156,18 @@ class Explorer(AbstractAgent):
         #print("-------------------")
         #print("Antes do merge")
        # self.queueA.print_elements()
-        self.queueA.merge_sort()
+        self.verde.merge_sort()
         #print("Depois do merge")
         #self.queueA.print_elements()
         #print("-------------------")
 
     def caminhoA(self):
         self.explorer_map.remove_rows_with_incorrect_columns()
-        self.queueA.enqueue([self.rowA, self.columnA, self.score([self.rowA, self.columnA]), None, None], self.alreadyA)
+        self.verde.enqueue([self.rowA, self.columnA, self.score([self.rowA, self.columnA]), None, None], self.vermelho)
         self.index = 0
 
         while self.index <= 0:
-            self.vizinhos(self.queueA.get_element_by_index(0))
+            self.vizinhos(self.verde.get_element_by_index(0))
             #print("loop")
 
         self.la = self.head[0]
@@ -184,7 +184,7 @@ class Explorer(AbstractAgent):
 
     def loop(self):
         # print(self.la, self.cb)
-        aux = self.alreadyA.get_element_by_index(self.alreadyA.find_index_by_values(self.la, self.cb))
+        aux = self.vermelho.get_element_by_index(self.vermelho.find_index_by_values(self.la, self.cb))
         # print(aux)
         self.la = aux[2]
         self.cb = aux[3]
@@ -226,7 +226,7 @@ class Explorer(AbstractAgent):
 
             self.finalQueue.enqueue([self.rowA, self.columnA])
             print(self.head)
-            self.alreadyA.print_elements()
+            self.vermelho.print_elements()
             print("-------------------------------")
             self.finalQueue.print_elements()
             self.finalStack.push([self.rowA, self.columnA])

@@ -214,17 +214,19 @@ class Explorer(AbstractAgent):
         #    return True
 
         if self.rtime < ((self.TIMEMAX)*((1 + (0.04*abs(self.row) + 0.04*abs(self.column)))) + 25 + 30*((self.TIMEMAX/66))) and not self.a:
+
+
+            #ALGORITMO A*
             self.rowA = self.row   #SALVA A LINHA QUE ELE ESTÁ NO MOMENTO QUE PAROU O DFS ONLINE
             self.columnA = self.column   #SALVA A COLUNA QUE ELE ESTÁ NO MOMENTO QUE PAROU O DFS ONLINE
             self.a = True #FLAG PARA AVISAR PARA IF PROXIMO QUE COMEÇOU A* em DELIBERATE
             self.b = True #FLAG PARA AVISAR PARA IF PROXIMO QUE COMEÇOU A* em DELIBERATE
-            print(self.rowA, self.columnA)
             self.caminhoA() #COMEÇA PRIMEIRA PARTE DO A* DE EXPLORAR CAMINHOS COM BASE NO "SCORE"
-
-
-
-
             self.finalQueue.enqueue([self.rowA, self.columnA])
+            #---------------------------------------------------------------------------------------------------
+
+
+
             print(self.head)
             self.vermelho.print_elements()
             print("-------------------------------")

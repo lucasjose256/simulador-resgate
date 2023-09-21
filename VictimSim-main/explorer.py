@@ -82,7 +82,7 @@ class Explorer(AbstractAgent):
         # self.explorer_map.print_matrix()
         # print(l, c, "DEPOIS", self.rowA, self.columnA)
         #self.alreadyA.print_elements()
-        if l != self.rowA or c != self.columnA:
+        if not (l == self.rowA and c == self.columnA):
             # print("------------------------------------------------------------------")
             #self.queueA.print_elements()
             # print("Achou ", self.queueA.get_element_by_index(self.queueA.find_index_by_values(l, c)))
@@ -153,13 +153,13 @@ class Explorer(AbstractAgent):
 
         #print("-----------------ALREADY")
         #self.alreadyA.print_elements()
-        print("-------------------")
-        print("Antes do merge")
-        self.verde.print_elements()
+        #print("-------------------")
+        #print("Antes do merge")
+        #self.verde.print_elements()
         self.verde.merge_sort()
-        print("Depois do merge")
-        self.verde.print_elements()
-        print("-------------------")
+        #print("Depois do merge")
+        #self.verde.print_elements()
+        #print("-------------------")
 
     def caminhoA(self):
         self.explorer_map.remove_rows_with_incorrect_columns()
@@ -227,10 +227,10 @@ class Explorer(AbstractAgent):
 
 
 
-            print(self.head)
-            self.vermelho.print_elements()
-            print("-------------------------------")
-            self.finalQueue.print_elements()
+            #print(self.head)
+            #self.vermelho.print_elements()
+            #print("-------------------------------")
+            #self.finalQueue.print_elements()
             self.finalStack.push([self.rowA, self.columnA])
             aux1 = self.finalStack.pop()
 

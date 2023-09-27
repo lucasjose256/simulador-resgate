@@ -76,8 +76,9 @@ class StringQueue:
                     j += 1
                 else:
                     # Em caso de empate em [2], comparar a soma de [0] e [1]
-                    sum_left = left_half[i][0] + left_half[i][1]
-                    sum_right = right_half[j][0] + right_half[j][1]
+                    sum_left = abs(left_half[i][0]) + abs(left_half[i][1])
+                    sum_right = abs(right_half[j][0]) + abs(right_half[j][1])
+
 
                     if sum_left < sum_right:
                         arr[k] = left_half[i]

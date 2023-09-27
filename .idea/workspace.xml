@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="Rodrigo" />
+    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="Rodrigo">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/StringQueue.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/StringQueue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/explorer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +46,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Rodrigo&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="explorer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="simulador-resgate" />
       <option name="INTERPRETER_OPTIONS" value="" />

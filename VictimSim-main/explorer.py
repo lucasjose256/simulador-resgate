@@ -217,7 +217,7 @@ class Explorer(AbstractAgent):
         #    self.body.walk(0, 0)
         #    return True
 
-        if self.rtime < ((min(abs(self.row), abs(self.column)) * 1.5 + (max(abs(self.row), abs(self.column)) - (min(abs(self.row), abs(self.column))))))*2 and not self.a:
+        if self.rtime < (abs(self.row) + abs(self.column))*1.75 + 10 and not self.a:
 
 
             #ALGORITMO A*
@@ -236,7 +236,7 @@ class Explorer(AbstractAgent):
             #print(self.head)
             #self.vermelho.print_elements()
             #print("-------------------------------")
-            #self.finalQueue.print_elements()
+            self.finalQueue.print_elements()
             self.finalStack.push([self.rowA, self.columnA])
             aux1 = self.finalStack.pop()
 

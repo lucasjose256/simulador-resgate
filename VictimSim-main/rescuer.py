@@ -189,7 +189,7 @@ class Rescuer(AbstractAgent):
         #print("-------------------")
         #print("Antes do merge")
         #self.verde.print_elements()
-        self.verde.merge_sort()
+        #self.verde.merge_sort()
         #print("Depois do merge")
         #self.verde.print_elements()
         #print("-------------------")
@@ -442,6 +442,7 @@ class Rescuer(AbstractAgent):
                 #    print(f"Vítima {i + 1}: ({vitimas[0]}, {vitimas[1]})")
                 #print("--------------------------------")
                 self.printou_cluster = True
+        print(self.vitimas_cluster)
         '''
         if not self.iniciou_a:
             i = 0

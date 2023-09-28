@@ -310,21 +310,38 @@ class Rescuer(AbstractAgent):
 
             if self.iniciar_socorro:
                 '''
-                if self.x_atual != 0 or self.y_atual != 0 and not self.voltar_base:
+                if (self.x_atual != 0 or self.y_atual != 0) and not self.voltar_base:
                     self.finalStack.esvaziar_pilha()
                     self.caminhoA(0, 0)
                     self.score_volta = self.calculaScorePilha()
-                    if self.rtime < self.score_volta * 1.1:
+                    if self.rtime < (self.score_volta - 3.5):
+                        print(f"Posição que parou para voltar {self.x_atual} {self.y_atual}")
+                        if self.caminhoA_calculado and self.direcao_adicionada and self.plano_adicionado:
+                            print("EU ESTAVA A CAMINHO DA VITIMA")
+                        self.finalDirectionsQueue.clear()
+                        self.plan.clear()
+                        print(f"O tempo para voltar é {self.score_volta} e tenho {self.rtime}")
                         self.voltar_base = True
                         self.caminhoA_calculado = True
+                        self.direcao_adicionada = False
+                        self.plano_adicionado = False
                 '''
-                if self.rtime < (abs(self.x_atual) + abs(self.y_atual)) * 1.75 + 10 and (self.x_atual != 0 or self.y_atual != 0) and not self.voltar_base:
+                if (self.rtime < (abs(self.x_atual) + abs(self.y_atual)) * 1.75 + 10) and (self.x_atual != 0 or self.y_atual != 0) and not self.voltar_base:
                     # print(f"RESCUER PAROU EM {self.x_atual}, {self.y_atual}")
                     # print(f"RESCUER {self.clt} VOLTANDO PARA BASE")
                     self.voltar_base = True
+                    if self.caminhoA_calculado and self.direcao_adicionada and self.plano_adicionado:
+                        print("EU ESTAVA A CAMINHO DA VITIMA")
                     self.finalStack.esvaziar_pilha()
+                    self.finalDirectionsQueue.clear()
+                    self.plan.clear()
                     self.caminhoA(0, 0)
+                    self.score_volta = self.calculaScorePilha()
+                    print(f"O tempo para voltar é {self.score_volta} e tenho {self.rtime}")
                     self.caminhoA_calculado = True
+                    self.direcao_adicionada = False
+                    self.plano_adicionado = False
+                
 
                 if not self.caminhoA_calculado and not self.voltar_base:
                     self.quantidade_vitimas = len(self.vitimas_cluster)

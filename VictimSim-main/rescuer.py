@@ -34,6 +34,7 @@ class Rescuer(AbstractAgent):
         self.direcao_adicionada = False # FLAG PARA SABER SE AS DIREÇÕES DO MOVIMENTO JÁ FORAM ADICIONADAS
         self.plano_adicionado = False # FLAG PARA SABER SE O PLANO JÁ ESTÁ DEFINIDO PARA O AGENTE SE MOVER
         self.voltar_base = False # FLAG INDICANDO SE O AGENTE PRECISA VOLTAR PARA A BASE
+        self.score_volta = 0 # VARIÁVEL QUE ARMAZENA O TEMPO QUE DEMORA PRA VOLTAR PARA A BASE DA POSIÇÃO ATUAL
         self.x_vitima = 0 # POSIÇÃO X DA VÍTIMA QUE O AGENTE DESEJA IR
         self.y_vitima = 0 # POSIÇÃO Y DA VÍTIMA QUE O AGENTE DESEJA IR
         self.imprimiu_volta = False
@@ -81,7 +82,6 @@ class Rescuer(AbstractAgent):
             verde.dequeue()
         else:
             verde.dequeue()
-        fila = StringQueue()
         if rescuerIssues.procuraFinalMap([l - 1, c - 1]):
             if [l - 1, c - 1] != [l_final, c_final]:
                 if (vermelho.find_index_by_values(l - 1, c - 1)) == -1:
@@ -139,21 +139,13 @@ class Rescuer(AbstractAgent):
                 self.index += 1
                 self.head = [l, c]
 
-        #print("-----------------ALREADY")
-        #self.alreadyA.print_elements()
-        #print("-------------------")
-        #print("Antes do merge")
-        #self.verde.print_elements()
-        #self.verde.merge_sort()
-        #print("Depois do merge")
-        #self.verde.print_elements()
-        #print("-------------------")
-
     def caminhoA(self, x, y):
         l_final = x
         c_final = y
         verde = StringQueue()
         vermelho = StringQueue()
+        self.rowAtual = self.x_atual
+        self.columnAtual = self.y_atual
         self.index = 0
         self.head[0] = 0
         self.head[1] = 0
@@ -232,6 +224,7 @@ class Rescuer(AbstractAgent):
             if i == 0:
                 x_final = self.vitimas_cluster[i][0]
                 y_final = self.vitimas_cluster[i][1]
+                self.finalStack.esvaziar_pilha()
                 self.caminhoA(self.vitimas_cluster[i][0], self.vitimas_cluster[i][1])
                 #print(f"PILHA {i+1} VITIMA {self.vitimas_cluster[i][0]}, {self.vitimas_cluster[i][1]}")
                 #self.finalStack.imprimir_pilha()
@@ -259,8 +252,6 @@ class Rescuer(AbstractAgent):
         victims. Further actions may be necessary and should be added in the
         deliberata method"""
 
-
-
         # This is a off-line trajectory plan, each element of the list is
         # a pair dx, dy that do the agent walk in the x-axis and/or y-axis
         '''
@@ -275,12 +266,6 @@ class Rescuer(AbstractAgent):
             self.plan.append((-1, -1))
             self.plan.append((-1, 1))
             self.plan.append((1, 1))
-        elif (self.clt == 2):
-            self.plan.append((0, 1))
-            self.plan.append((0, 1))
-            self.plan.append((0, 1))
-            self.plan.append((0, 1))
-            self.plan.append((0, 1))
         '''
 
     @property
@@ -290,9 +275,6 @@ class Rescuer(AbstractAgent):
         Must be implemented in every agent
         @return True: there's one or more actions to do
         @return False: there's no more action to do """
-
-        #for i, vitimas in enumerate(self.vitimas_cluster):
-        #    print(f"Vítima {i + 1}: ({vitimas[0]}, {vitimas[1]})")
 
         if staticExplorer.checked():
             if not clustering.retornaCalculado():
@@ -304,59 +286,66 @@ class Rescuer(AbstractAgent):
                 atribuicoes_finais = clustering.retornaAtribuicoes()
                 vitimas_sem_duplicatas = rescuerIssues.retornaFinalVitimas()
 
-                print("-" * 15)
-                print(f"RESCUER: {self.clt}")
-                for i, vitimas in enumerate(vitimas_sem_duplicatas):
-                    print(f"Vítima {i + 1}: ({vitimas[0]}, {vitimas[1]})")
+                #print("-" * 15)
+                #print(f"RESCUER: {self.clt}")
+                #for i, vitimas in enumerate(vitimas_sem_duplicatas):
+                #    print(f"Vítima {i + 1}: ({vitimas[0]}, {vitimas[1]})")
 
-                print("Coordenadas dos centroides finais:")
-                for i, centroide in enumerate(centroides_finais):
-                    print(f"Centroide {i + 1}: ({centroide[0]}, {centroide[1]})")
+                #print("Coordenadas dos centroides finais:")
+                #for i, centroide in enumerate(centroides_finais):
+                #    print(f"Centroide {i + 1}: ({centroide[0]}, {centroide[1]})")
                 for i, atribuicoes in enumerate(atribuicoes_finais):
-                    print(f"Vítima {i + 1}: {atribuicoes+1}")
+                    #print(f"Vítima {i + 1}: {atribuicoes+1}")
                     if atribuicoes+1 == self.clt:
-                        print("GUARDOU")
-                        print(f"({rescuerIssues.retornaFinalVitimas()[i][0]}, {rescuerIssues.retornaFinalVitimas()[i][1]})")
+                        # print("GUARDOU")
+                        # print(f"({rescuerIssues.retornaFinalVitimas()[i][0]}, {rescuerIssues.retornaFinalVitimas()[i][1]})")
                         self.vitimas_cluster.append(rescuerIssues.retornaFinalVitimas()[i])
                 self.printou_cluster = True
-                print(f"VITIMAS PARA SEREM RESGASTADAS: {len(self.vitimas_cluster)}")
-                for i, vitimas in enumerate(self.vitimas_cluster):
-                    print(f"({vitimas[0]}, {vitimas[1]})")
-                print("-" * 15)
+                #print(f"VITIMAS PARA SEREM RESGASTADAS: {len(self.vitimas_cluster)}")
+                #for i, vitimas in enumerate(self.vitimas_cluster):
+                #    print(f"({vitimas[0]}, {vitimas[1]})")
+                #print("-" * 15)
+
                 self.iniciar_socorro = True
 
             if self.iniciar_socorro:
+                '''
+                if self.x_atual != 0 or self.y_atual != 0 and not self.voltar_base:
+                    self.finalStack.esvaziar_pilha()
+                    self.caminhoA(0, 0)
+                    self.score_volta = self.calculaScorePilha()
+                    if self.rtime < self.score_volta * 1.1:
+                        self.voltar_base = True
+                        self.caminhoA_calculado = True
+                '''
                 if self.rtime < (abs(self.x_atual) + abs(self.y_atual)) * 1.75 + 10 and (self.x_atual != 0 or self.y_atual != 0) and not self.voltar_base:
-                    print(f"RESCUER PAROU EM {self.x_atual}, {self.y_atual}")
-                    print(f"RESCUER {self.clt} VOLTANDO PARA BASE")
+                    # print(f"RESCUER PAROU EM {self.x_atual}, {self.y_atual}")
+                    # print(f"RESCUER {self.clt} VOLTANDO PARA BASE")
                     self.voltar_base = True
                     self.finalStack.esvaziar_pilha()
                     self.caminhoA(0, 0)
                     self.caminhoA_calculado = True
 
                 if not self.caminhoA_calculado and not self.voltar_base:
-                    self.rowAtual = self.x_atual
-                    self.columnAtual = self.y_atual
                     self.quantidade_vitimas = len(self.vitimas_cluster)
                     #print(f"RESCUER {self.clt} AINDA TEM {self.quantidade_vitimas} PARA RECUAR")
                     if self.quantidade_vitimas == 0:
-                        # ELE TEM QUE VOLTAR PARA A BASE SE ELE N ESTIVER NELA
-                        print(f"RESCUER PAROU EM {self.x_atual}, {self.y_atual}")
+                        # ELE TEM QUE VOLTAR PARA A BASE SE ELE NÃO ESTIVER NELA
+                        # print(f"RESCUER PAROU EM {self.x_atual}, {self.y_atual}")
                         if self.x_atual != 0 or self.y_atual != 0:
                             self.finalStack.esvaziar_pilha()
-                            print(f"RESCUER {self.clt} VOLTANDO PARA BASE")
-                            print("CABOU AS VITIMAS")
+                            # print(f"RESCUER {self.clt} VOLTANDO PARA BASE")
+                            print(f"RESCUER {self.clt} salvou todas as Vítimas dele")
                             self.voltar_base = True
                             self.caminhoA(0, 0)
                     elif self.quantidade_vitimas == 1:
                         # PEGA ESSA UNICA VITIMA E CALCULA O MENOR CAMINHO ATE ELA
+                        self.finalStack.esvaziar_pilha()
                         self.caminhoA(self.vitimas_cluster[0][0], self.vitimas_cluster[0][1])
                         self.x_vitima = self.vitimas_cluster[0][0]
                         self.y_vitima = self.vitimas_cluster[0][1]
                     else:
                         # TUDO MAIOR QUE 1, TEM QUE CALCULAR O MENOR CAMINHOS ENTRE AS N VITIMAS QUE ELE PRECISA SOCORRER
-                        # x, y = self.encontraMenorCaminhoEntreVitimas()
-                        # print(f"CAMINHO MAIS CURTO DA VITIMA ({x}, {y})")
                         self.x_vitima, self.y_vitima = self.encontraMenorCaminhoEntreVitimas()
                     #self.finalQueue.print_elements()
                     self.caminhoA_calculado = True
@@ -364,8 +353,8 @@ class Rescuer(AbstractAgent):
                     #self.finalStack.imprimir_pilha()
 
                 if self.voltar_base and not self.imprimiu_volta:
-                    print("PILHA DA VOLTA")
-                    self.finalStack.imprimir_pilha()
+                    #print("PILHA DA VOLTA")
+                    #self.finalStack.imprimir_pilha()
                     self.imprimiu_volta = True
 
                 if self.caminhoA_calculado and not self.direcao_adicionada:
@@ -373,9 +362,7 @@ class Rescuer(AbstractAgent):
                     aux1 = self.finalStack.pop()
                     while not self.finalStack.is_empty():
                         aux2 = self.finalStack.pop()
-                        # print("aux1: ", aux1, "aux2: ", aux2)
                         way = [aux1[0] - aux2[0], aux1[1] - aux2[1]]
-                        # print("aux1: ", aux1, "aux2: ", aux2, "way:", way)
                         decisao = ""
                         if (way == [0, 1]):
                             decisao = "LEFT"
@@ -393,14 +380,12 @@ class Rescuer(AbstractAgent):
                             decisao = "diagonalDL"
                         elif (way == [-1, -1]):
                             decisao = "diagonalDR"
-                        # print("Decisao:", decisao)
                         aux1 = aux2
                         self.finalDirectionsQueue.enqueue(decisao)
                         #self.finalDirectionsQueue.print_elements()
                     self.direcao_adicionada = True
 
                 if self.caminhoA_calculado and self.direcao_adicionada and not self.plano_adicionado:
-                    print(f"ESSE EH O RESCUER {self.clt}")
                     while not self.finalDirectionsQueue.is_empty():
                         dx = 0
                         dy = 0
@@ -431,8 +416,6 @@ class Rescuer(AbstractAgent):
                             dx = 1
                         self.plan.append((dx, dy))
                     else:
-                        #print("O PLANO")
-                        #print(self.plan)
                         self.plano_adicionado = True
 
                 if self.caminhoA_calculado and self.direcao_adicionada and self.plano_adicionado:
@@ -454,16 +437,13 @@ class Rescuer(AbstractAgent):
                         # check if there is a victim at the current position
                         self.x_atual += dy
                         self.y_atual += dx
-                        #aux3 = staticExplorer.retornaNumLinhas()
-                        #self.contRow = aux3
                         seq = self.body.check_for_victim()
                         if seq >= 0:
                             self.rtime -= self.COST_FIRST_AID
                             res = self.body.first_aid(seq)  # True when rescued
                         if (self.x_atual == self.x_vitima and self.y_atual == self.y_vitima):
-                            #print(f"TIROU A VITIMA ({self.x_vitima}, {self.y_vitima})")
                             self.retira_vitima(self.x_vitima, self.y_vitima)
-                           # print("-" * 15)
+                            #print("-" * 15)
                             #print(f"RESCUER {self.clt}")
                             #print(f"VITIMAS PARA SEREM RESGASTADAS: {len(self.vitimas_cluster)}")
                             #for i, vitimas in enumerate(self.vitimas_cluster):
@@ -472,154 +452,5 @@ class Rescuer(AbstractAgent):
                             self.caminhoA_calculado = False
                             self.direcao_adicionada = False
                             self.plano_adicionado = False
-        '''
-        if not self.iniciou_a:
-            i = 0
-            menor = ''
-            if self.voltar:
-                self.caminhoA(0, 0)
 
-            else:
-                for i in range(len(self.vitimas_cluster)):
-                    if i == 0 and len(self.vitimas_cluster) > 1:
-                        menor = self.calcula_dois_menor(self.vitimas_cluster[i][0], self.vitimas_cluster[i][1], self.vitimas_cluster[i+1][0], self.vitimas_cluster[i+1][1])
-                        i += 2
-                    elif i == 0 and len(self.vitimas_cluster) == 1:
-                        menor == "C"
-                        self.rowVatual = self.vitimas_cluster[i][1]
-                        self.columnVatual = self.vitimas_cluster[i][1]
-                        self.caminhoA(self.vitimas_cluster[i][0], self.vitimas_cluster[i][1])
-                    else:
-                        menor = self.calcular_um_menor(self.vitimas_cluster[i][0], self.vitimas_cluster[i][1])
-                        i += 1
-
-                if menor == "A":
-                    self.finalStack = stack.copiar_pilha(self.stackA)
-                elif menor == "B":
-                    self.finalStack = stack.copiar_pilha(self.stackB)
-                #elif menor == "C":
-                    #self.finalStack.push([self.rowAtual, self.columnAtual])
-
-            #self.finalStack.push([self.rowAtual, self.columnAtual])
-            #self.finalStack.imprimir_pilha()
-            #print("------------------")
-
-            aux1 = self.finalStack.pop()
-            while not self.finalStack.is_empty():
-                aux2 = self.finalStack.pop()
-                # print("aux1: ", aux1, "aux2: ", aux2)
-                way = [aux1[0] - aux2[0], aux1[1] - aux2[1]]
-                # print("aux1: ", aux1, "aux2: ", aux2, "way:", way)
-                decisao = ""
-                if (way == [0, 1]):
-                    decisao = "LEFT"
-                elif (way == [0, -1]):
-                    decisao = "RIGHT"
-                elif (way == [1, 0]):
-                    decisao = "UP"
-                elif (way == [-1, 0]):
-                    decisao = "DOWN"
-                elif (way == [1, 1]):
-                    decisao = "diagonalUL"
-                elif (way == [1, -1]):
-                    decisao = "diagonalUR"
-                elif (way == [-1, 1]):
-                    decisao = "diagonalDL"
-                elif (way == [-1, -1]):
-                    decisao = "diagonalDR"
-                # print("Decisao:", decisao)
-                aux1 = aux2
-                self.finalDirectionsQueue.enqueue(decisao)
-            self.iniciou_a = True
-            self.a = True
-            #self.finalDirectionsQueue.print_elements()
-            #print("-------------------------")
-
-        if self.a:
-            if not self.finalDirectionsQueue.is_empty():
-                dx = 0
-                dy = 0
-                dec = self.finalDirectionsQueue.dequeue()
-                if self.finalDirectionsQueue.is_empty():
-                    self.a = False
-                if dec == "UP":
-                    dy = -1
-                    dx = 0
-                elif dec == "DOWN":
-                    dy = 1
-                    dx = 0
-                elif dec == "RIGHT":
-                    dx = 1
-                    dy = 0
-                elif dec == "LEFT":
-                    dx = -1
-                    dy = 0
-                elif dec == "diagonalUL":
-                    dy = -1
-                    dx = -1
-                elif dec == "diagonalUR":
-                    dy = -1
-                    dx = 1
-                elif dec == "diagonalDL":
-                    dy = 1
-                    dx = -1
-                elif dec == "diagonalDR":
-                    dy = 1
-                    dx = 1
-                self.plan.append((dx, dy))
-            self.b = True
-
-
-        # No more actions to do
-        if self.b:
-            if self.plan == []:  # empty list, no more actions to do
-                return False
-
-            # Takes the first action of the plan (walk action) and removes it from the plan
-            dx, dy = self.plan.pop(0)
-
-            # Walk - just one step per deliberation
-            result = self.body.walk(dx, dy)
-            if dx != 0 and dy != 0:
-                self.rtime -= self.COST_DIAG
-            else:
-                self.rtime -= self.COST_LINE
-
-            # Rescue the victim at the current position
-            if result == PhysAgent.EXECUTED:
-                # check if there is a victim at the current position
-                self.rowB += dx
-                self.columnB += dy
-                aux3 = staticExplorer.retornaNumLinhas()
-                self.contRow = aux3
-                seq = self.body.check_for_victim()
-                if seq >= 0:
-                    self.rtime -= self.COST_FIRST_AID
-                    res = self.body.first_aid(seq)  # True when rescued
-                    self.retira_vitima(self.rowB, self.columnB)
-                if (self.rowVatual == self.rowB and self.columnVatual == self.rowB):
-                    self.b = False
-                    self.iniciou_a = False
-                    self.voltar = True
-
-            return True
-        '''
-        '''
-        # No more actions to do
-        if self.plan == []:  # empty list, no more actions to do
-            return False
-
-        # Takes the first action of the plan (walk action) and removes it from the plan
-        dx, dy = self.plan.pop(0)
-
-        # Walk - just one step per deliberation
-        result = self.body.walk(dx, dy)
-
-        # Rescue the victim at the current position
-        if result == PhysAgent.EXECUTED:
-            # check if there is a victim at the current position
-            seq = self.body.check_for_victim()
-            if seq >= 0:
-                res = self.body.first_aid(seq)  # True when rescued
-        '''
         return True

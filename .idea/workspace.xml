@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="Padronização dos nomes de arquivos">
+    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="Retirado variáveis e funções não utilizadas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/clustering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/explorer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VictimSim-main/rescuer.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/rescuer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/rescuer_issues.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/rescuer_issues.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/static_explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/static_explorer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -357,7 +359,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695873483821</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Retirado variáveis e funções não utilizadas">
+      <option name="closed" value="true" />
+      <created>1695874672370</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1695874672370</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -408,6 +418,7 @@
     <MESSAGE value="socorrista &quot;semi-pronto&quot;" />
     <MESSAGE value="main com inserção do nome da pasta" />
     <MESSAGE value="Padronização dos nomes de arquivos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Padronização dos nomes de arquivos" />
+    <MESSAGE value="Retirado variáveis e funções não utilizadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Retirado variáveis e funções não utilizadas" />
   </component>
 </project>

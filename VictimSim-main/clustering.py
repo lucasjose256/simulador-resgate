@@ -71,7 +71,7 @@ def k_means():
         clustering.k = 3
     else:
         clustering.k = 4
-    print(f"QUANTIDADE DE VITIMAS AO TODO NO CLUSTERING: {len(pontos)}")
+    # print(f"QUANTIDADE DE VITIMAS AO TODO NO CLUSTERING: {len(pontos)}")
     # Inicialização aleatória dos centroides
     clustering.centroides = random.sample(pontos, clustering.k)
     for _ in range(clustering.max_iteracoes):

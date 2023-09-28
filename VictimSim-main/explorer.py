@@ -239,7 +239,7 @@ class Explorer(AbstractAgent):
             #print(self.head)
             #self.vermelho.print_elements()
             #print("-------------------------------")
-            self.finalQueue.print_elements()
+            #self.finalQueue.print_elements()
             self.finalStack.push([self.rowA, self.columnA])
             aux1 = self.finalStack.pop()
 

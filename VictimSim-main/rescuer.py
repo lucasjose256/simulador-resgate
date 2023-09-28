@@ -26,53 +26,28 @@ class Rescuer(AbstractAgent):
         self.plan = []  # a list of planned actions
         self.rtime = self.TLIM  # for controlling the remaining time
         self.clt = cluster  # GRUPO DO CLUSTERING
-        self.iniciar_socorro = False #QUANDO O ALGORITMO DE CLUSTERING TERMINAR, OS SOCORRISTAS PODEM INICIAR SUAS AÇÕES
-        self.quantidade_vitimas = 0
-        self.x_atual = 0
-        self.y_atual = 0
-        self.caminhoA_calculado = False
-        self.direcao_adicionada = False
-        self.plano_adicionado = False
-        self.voltar_base = False
-        self.x_vitima = 0
-        self.y_vitima = 0
+        self.iniciar_socorro = False # QUANDO O ALGORITMO DE CLUSTERING TERMINAR, OS SOCORRISTAS PODEM INICIAR SUAS AÇÕES
+        self.quantidade_vitimas = 0 # QUANTIDADE DE VÍTIMAS QUE O SOCORRISTA DEVE ATENDER
+        self.x_atual = 0 # POSIÇÃO X ATUAL
+        self.y_atual = 0 # POSIÇÃO Y ATUAL
+        self.caminhoA_calculado = False # FLAG PARA SABER SE JÁ EXISTE UM CAMINHO A* CALCULADO
+        self.direcao_adicionada = False # FLAG PARA SABER SE AS DIREÇÕES DO MOVIMENTO JÁ FORAM ADICIONADAS
+        self.plano_adicionado = False # FLAG PARA SABER SE O PLANO JÁ ESTÁ DEFINIDO PARA O AGENTE SE MOVER
+        self.voltar_base = False # FLAG INDICANDO SE O AGENTE PRECISA VOLTAR PARA A BASE
+        self.x_vitima = 0 # POSIÇÃO X DA VÍTIMA QUE O AGENTE DESEJA IR
+        self.y_vitima = 0 # POSIÇÃO Y DA VÍTIMA QUE O AGENTE DESEJA IR
         self.imprimiu_volta = False
-        self.a = False
-        self.b = False
-        self.finalMap = []
-        self.vitimas = []
-        self.vitimas_cluster = []
+        self.vitimas_cluster = [] # LISTA DAS VÍTIMAS DO GRUPO DO AGENTE
         self.printou_cluster = False
-        self.iniciou_a = False
-        self.voltar = False
         self.index = 0
         self.head = [0, 0]
-        self.TIMEMAX = 1
-        self.row = 0
-        self.column = 0
-        self.rowAtual = 0
-        self.columnAtual = 0
+        self.rowAtual = 0 # GUARDA A POSIÇÃO X QUE O AGENTE SE ENCONTRA PARA REALIZAR O A*
+        self.columnAtual = 0 # GUARDA A POSIÇÃO Y QUE O AGENTE SE ENCONTRA PARA REALIZAR O A*
         self.l_last = 0
         self.c_last = 0
-        self.verde = StringQueue()
-        self.vermelho = StringQueue()
-        self.finalQueue = StringQueue()
         self.finalStack = stack()
         self.finalDirectionsQueue = StringQueue()
         self.stackAux = stack()
-        self.stackA = stack()
-        self.stackB = stack()
-        self.stackA_calculado = False
-        self.stackB_calculado = False
-        self.somaA = 0
-        self.somaB = 0
-        self.xA = 0
-        self.yA = 0
-        self.xB = 0
-        self.yB = 0
-        self.rowB = 0
-        self.columnB = 0
-
 
         # Starts in IDLE state.
         # It changes to ACTIVE when the map arrives
@@ -81,38 +56,6 @@ class Rescuer(AbstractAgent):
         # planning
         self.__planner()
 
-    def adicionar_coluna_sem_duplicatas(self, matriz):
-        coluna_0 = [linha[0] for linha in matriz]
-
-        for elemento in coluna_0:
-            if elemento not in self.finalMap:
-                self.finalMap.append(elemento)
-
-        #print("------------------")
-        #self.print_matrix()
-        #print("------------------")
-
-
-    def print_matrix(self):
-        for row in staticExplorer.finalMap:
-            for element in row:
-                print(element, end=" ")  # Imprime o elemento e um espaço em branco
-            print()
-
-    def adicionar_vitimas(self, vetor):
-        #self.vitimas.extend(vetor)
-        #print(staticExplorer.vitimas)
-        #print(self.clt)
-        #staticExplorer.print_matrix()
-        #print("----------------------")
-        #staticExplorer.imprimeVitimas()
-
-        '''
-        for i, vitimas in enumerate(staticExplorer.vitimas):
-            print(f"Vítima {i + 1}: ({vitimas[0]}, {vitimas[1]})")
-        '''
-
-
     def go_save_victims(self, walls, victims):
         """ The explorer sends the map containing the walls and
         victims' location. The rescuer becomes ACTIVE. From now,
@@ -120,7 +63,6 @@ class Rescuer(AbstractAgent):
         self.body.set_state(PhysAgent.ACTIVE)
 
     def retira_vitima(self, x, y):
-        #print(len(self.vitimas_cluster))
         self.vitimas_cluster = [vitima for vitima in self.vitimas_cluster if vitima[0] != x or vitima[1] != y]
 
     def score(self, lc):
@@ -311,147 +253,6 @@ class Rescuer(AbstractAgent):
         self.finalStack = stack.copiar_pilha(self.auxStack)
 
         return x_final, y_final
-
-    def calcula_dois_menor(self, x1, y1, x2, y2):
-        self.rowAtual = self.row
-        self.columnAtual = self.column
-        self.caminhoA(x1, y1)
-        #self.finalStack.push([self.rowAtual, self.columnAtual])
-        #self.finalStack.imprimir_pilha()
-        self.stackAux = stack.copiar_pilha(self.finalStack)
-        aux1 = self.finalStack.pop()
-        soma = 0
-        while not self.finalStack.is_empty():
-            aux2 = self.finalStack.pop()
-            way = [aux1[0] - aux2[0], aux1[1] - aux2[1]]
-            if (way == [0, 1]):
-                soma += 1
-            elif (way == [0, -1]):
-                soma += 1
-            elif (way == [1, 0]):
-                soma += 1
-            elif (way == [-1, 0]):
-                soma += 1
-            elif (way == [1, 1]):
-                soma += 1.5
-            elif (way == [1, -1]):
-                soma += 1.5
-            elif (way == [-1, 1]):
-                soma += 1.5
-            elif (way == [-1, -1]):
-                soma += 1.5
-            aux1 = aux2
-        self.stackA = stack.copiar_pilha(self.stackAux)
-
-        stack.esvaziar_pilha(self.stackAux)
-        stack.esvaziar_pilha(self.finalStack)
-
-        self.caminhoA(x2, y2)
-        #self.finalStack.push([self.rowAtual, self.columnAtual])
-        #self.finalStack.imprimir_pilha()
-        self.stackAux = stack.copiar_pilha(self.finalStack)
-        aux1 = self.finalStack.pop()
-        soma = 0
-        while not self.finalStack.is_empty():
-            aux2 = self.finalStack.pop()
-            way = [aux1[0] - aux2[0], aux1[1] - aux2[1]]
-            if (way == [0, 1]):
-                soma += 1
-            elif (way == [0, -1]):
-                soma += 1
-            elif (way == [1, 0]):
-                soma += 1
-            elif (way == [-1, 0]):
-                soma += 1
-            elif (way == [1, 1]):
-                soma += 1.5
-            elif (way == [1, -1]):
-                soma += 1.5
-            elif (way == [-1, 1]):
-                soma += 1.5
-            elif (way == [-1, -1]):
-                soma += 1.5
-            aux1 = aux2
-        self.stackB = stack.copiar_pilha(self.stackAux)
-
-        stack.esvaziar_pilha(self.stackAux)
-        stack.esvaziar_pilha(self.finalStack)
-
-        if self.somaA > self.somaB:
-            self.stackB_calculado = True
-            stack.esvaziar_pilha(self.stackA)
-            self.xB = x2
-            self.yB = y2
-            self.rowVatual = x2
-            self.columnVatual = y2
-            return "B"
-        else:
-            self.stackA_calculado = True
-            stack.esvaziar_pilha(self.stackB)
-            self.xA = x1
-            self.yA = y1
-            self.rowVatual = x1
-            self.columnVatual = y1
-            return "A"
-
-    def calcular_um_menor(self, x1, y1):
-        self.rowAtual = self.row
-        self.columnAtual = self.column
-        self.caminhoA(x1, y1)
-        #self.finalStack.push([self.rowAtual, self.columnAtual])
-        #self.finalStack.imprimir_pilha()
-        self.stackAux = stack.copiar_pilha(self.finalStack)
-        aux1 = self.finalStack.pop()
-        soma = 0
-        while not self.finalStack.is_empty():
-            aux2 = self.finalStack.pop()
-            way = [aux1[0] - aux2[0], aux1[1] - aux2[1]]
-            if (way == [0, 1]):
-                soma += 1
-            elif (way == [0, -1]):
-                soma += 1
-            elif (way == [1, 0]):
-                soma += 1
-            elif (way == [-1, 0]):
-                soma += 1
-            elif (way == [1, 1]):
-                soma += 1.5
-            elif (way == [1, -1]):
-                soma += 1.5
-            elif (way == [-1, 1]):
-                soma += 1.5
-            elif (way == [-1, -1]):
-                soma += 1.5
-            aux1 = aux2
-        if self.stackB_calculado:
-            self.stackA = stack.copiar_pilha(self.stackAux)
-            self.somaA = soma
-            self.xA = x1
-            self.yA = y1
-            self.rowVatual = x1
-            self.columnVatual = y1
-            self.stackA_calculado = True
-
-        if self.stackA_calculado:
-            self.stackB = stack.copiar_pilha(self.stackAux)
-            self.somaB = soma
-            self.xB = x1
-            self.yB = y1
-            self.rowVatual = x1
-            self.columnVatual = y1
-            self.stackB_calculado = True
-
-        stack.esvaziar_pilha(self.stackAux)
-        stack.esvaziar_pilha(self.finalStack)
-
-        if self.somaA > self.somaB:
-            self.stackA_calculado = False
-            stack.esvaziar_pilha(self.stackA)
-            return "B"
-        else:
-            self.stackB_calculado = False
-            stack.esvaziar_pilha(self.stackB)
-            return "A"
 
     def __planner(self):
         """ A private method that calculates the walk actions to rescue the

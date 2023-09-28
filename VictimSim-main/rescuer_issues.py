@@ -1,5 +1,5 @@
 class rescuerIssues:
-    vitimas = [] #VÍTIMAS PODEM ESTAR REPETIDAS SE ACHADAS POR MAIS DE UM AGENTE
+    vitimas = [] #PODE CONTER VITIMAS REPETIDAS, SE ENCONTRADAS POR MAIS DE UM EXPLORADOR
     finalVitimas = [] #VÍTIMAS NÃO REPETIDAS
     finalMapa = [] #MAPA FINAL A PARTIR DA JUNÇÃO DO MAPA DE CADA EXPLORADOR
 
@@ -23,7 +23,6 @@ class rescuerIssues:
     def retirarVitimasRepetidas():
         for x in rescuerIssues.vitimas:
             if x not in rescuerIssues.finalVitimas:
-                #print(f"{x[0]}, {x[1]}")
                 rescuerIssues.finalVitimas.append(x)
 
     @staticmethod

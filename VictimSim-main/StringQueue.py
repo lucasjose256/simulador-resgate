@@ -24,6 +24,9 @@ class StringQueue:
     def is_empty(self):
         return len(self.queue) == 0
 
+    def clear(self):
+        self.queue = []
+
     def peek(self):
         if not self.is_empty():
             return self.queue[0]

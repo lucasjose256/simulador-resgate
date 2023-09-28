@@ -15,6 +15,7 @@ from abc import ABC, abstractmethod
 from stack import stack
 from StringQueue import StringQueue
 from staticExplorer import staticExplorer
+from rescuerIssues import rescuerIssues
 
 
 class Explorer(AbstractAgent):
@@ -197,10 +198,10 @@ class Explorer(AbstractAgent):
         method at each cycle. Must be implemented in every agent"""
         if self.d and staticExplorer.checked():
             # self.resc.adicionar_coluna_sem_duplicatas(self.explorer_map.matrix_list)]
-            print("Decisao: ", self.dir, "Vitimas: ", len(self.vit))
-            staticExplorer.addFinalMap(self.explorer_map.matrix_list)
+            # print("Decisao: ", self.dir, "Vitimas: ", len(self.vit))
+            #staticExplorer.addFinalMap(self.explorer_map.matrix_list)
             self.resc.go_save_victims([], [])
-            staticExplorer.addVitimas(self.vit)
+            #staticExplorer.addVitimas(self.vit)
             #self.resc.adicionar_vitimas(self.vit)
             return False
         elif (self.d):
@@ -210,6 +211,8 @@ class Explorer(AbstractAgent):
             # time to wake up the rescuer
             # pass the walls and the victims (here, they're empty)
             staticExplorer.agentArrived()
+            rescuerIssues.adicionaFinalMap(self.explorer_map.matrix_list)
+            rescuerIssues.adicionaVitimas(self.vit)
             self.d = True
             print(f"{self.NAME} I believe I've remaining time of {self.rtime:.1f}")
             return True

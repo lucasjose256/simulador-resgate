@@ -33,9 +33,9 @@ class stack:
         return pilha_copia
 
     # Função para esvaziar uma pilha
-    def esvaziar_pilha(pilha):
-        while not pilha.is_empty():
-            pilha.pop()
+    def esvaziar_pilha(self):
+        while not self.is_empty():
+            self.pop()
 
     def imprimir_pilha(self):
         for elemento in self.stack:

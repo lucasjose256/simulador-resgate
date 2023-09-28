@@ -1,43 +1,24 @@
 import random
-import staticExplorer
+from rescuerIssues import rescuerIssues
 
 class clustering:
-    vitimas_sem_duplicatas = []
     centroides = []
     atribuicoes = []
-    k = 4
+    k = 0
     max_iteracoes = 100
     calculado = False
 
 @staticmethod
-def clustering_calculado():
-    clustering.calculado = True
-
-@staticmethod
-def ret_calculado():
+def retornaCalculado():
     return clustering.calculado
 
 @staticmethod
-def ret_centroides():
+def retornaCentroides():
     return clustering.centroides
 
 @staticmethod
-def ret_atribuicoes():
+def retornaAtribuicoes():
     return clustering.atribuicoes
-
-@staticmethod
-def ret_vitimas_sem_duplicatas():
-    return clustering.vitimas_sem_duplicatas
-
-@staticmethod
-def tirar_duplicatas(vitimas):
-    for x in vitimas:
-        if x not in clustering.vitimas_sem_duplicatas:
-            clustering.vitimas_sem_duplicatas.append(x)
-
-@staticmethod
-def define_pontos():
-    clustering.pontos = [(clustering.vitimas_sem_duplicatas[i][0], clustering.vitimas_sem_duplicatas[i][1]) for i in range(len(clustering.vitimas_sem_duplicatas))]
 
 # Função para calcular a distância euclidiana entre dois pontos inteiros
 def distancia(ponto1, ponto2):
@@ -59,7 +40,6 @@ def encontrar_centroide_mais_proximo(ponto, centroides):
 
 
 # Função para atualizar os centroides com base nas atribuições
-@staticmethod
 def atualizar_centroides(pontos, atribuicoes, k):
     novos_centroides = []
     for i in range(k):
@@ -77,16 +57,22 @@ def atualizar_centroides(pontos, atribuicoes, k):
             novos_centroides.append(novo_centroide)
     return novos_centroides
 
-
 # Função para executar o algoritmo K-means
 @staticmethod
 def k_means():
-    pontos = [(staticExplorer.staticExplorer.returnVitFinal()[i][0], staticExplorer.staticExplorer.returnVitFinal()[i][1]) for i in
-                         range(len(staticExplorer.staticExplorer.returnVitFinal()))]
+    #pontos = [(staticExplorer.staticExplorer.returnVitFinal()[i][0], staticExplorer.staticExplorer.returnVitFinal()[i][1]) for i in
+    #                     range(len(staticExplorer.staticExplorer.returnVitFinal()))]
+    pontos = [(rescuerIssues.retornaFinalVitimas()[i][0], rescuerIssues.retornaFinalVitimas()[i][1]) for i in range(len(rescuerIssues.retornaFinalVitimas()))]
+    if len(pontos) == 1:
+        clustering.k = 1
+    elif len(pontos) == 2:
+        clustering.k = 2
+    elif len(pontos) == 3:
+        clustering.k = 3
+    else:
+        clustering.k = 4
+    print(f"QUANTIDADE DE VITIMAS AO TODO NO CLUSTERING: {len(pontos)}")
     # Inicialização aleatória dos centroides
-    while len(pontos) < clustering.k:
-        clustering.k -= 1
-
     clustering.centroides = random.sample(pontos, clustering.k)
     for _ in range(clustering.max_iteracoes):
         # Atribuir cada ponto ao centróide mais próximo
@@ -100,3 +86,5 @@ def k_means():
             break
 
         clustering.centroides = novos_centroides
+
+    clustering.calculado = True

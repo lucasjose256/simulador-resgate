@@ -1,5 +1,5 @@
 import random
-from rescuerIssues import rescuerIssues
+from rescuer_issues import rescuerIssues
 
 class clustering:
     centroides = []

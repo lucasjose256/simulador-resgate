@@ -8,10 +8,10 @@ from abstract_agent import AbstractAgent
 from physical_agent import PhysAgent
 from abc import ABC, abstractmethod
 import clustering
-from staticExplorer import staticExplorer
-from StringQueue import StringQueue
+from static_explorer import staticExplorer
+from string_queue import StringQueue
 from stack import stack
-from rescuerIssues import rescuerIssues
+from rescuer_issues import rescuerIssues
 
 ## Classe que define o Agente Rescuer com um plano fixo
 class Rescuer(AbstractAgent):

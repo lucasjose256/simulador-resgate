@@ -7,15 +7,15 @@ import os
 import random
 import math
 
-from ExplorerDrawnMap import ExplorerDrawnMap
+from explorer_drawn_map import ExplorerDrawnMap
 from abstract_agent import AbstractAgent
 from physical_agent import PhysAgent
 from abc import ABC, abstractmethod
 
 from stack import stack
-from StringQueue import StringQueue
-from staticExplorer import staticExplorer
-from rescuerIssues import rescuerIssues
+from string_queue import StringQueue
+from static_explorer import staticExplorer
+from rescuer_issues import rescuerIssues
 
 
 class Explorer(AbstractAgent):

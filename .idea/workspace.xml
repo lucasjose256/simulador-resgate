@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="Finalizado, falta revisar em grupo">
+    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="FINALIZADO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/clustering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/env_size.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/env_size.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/teste_sala/env_size.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/teste_sala/env_size.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/teste_sala/sinais_vitais.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/teste_sala/sinais_vitais.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/rescuer.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/rescuer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,7 +386,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695912212498</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="FINALIZADO">
+      <option name="closed" value="true" />
+      <created>1695948605583</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1695948605583</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -434,6 +449,7 @@
     <MESSAGE value="Retirado as partes sem relevância no código, 100% funcional aparentemente" />
     <MESSAGE value="Retirado as partes sem relevância no código, funcionado 100" />
     <MESSAGE value="Finalizado, falta revisar em grupo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalizado, falta revisar em grupo" />
+    <MESSAGE value="FINALIZADO" />
+    <option name="LAST_COMMIT_MESSAGE" value="FINALIZADO" />
   </component>
 </project>

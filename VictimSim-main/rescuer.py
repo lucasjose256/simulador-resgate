@@ -138,6 +138,7 @@ class Rescuer(AbstractAgent):
             else:
                 self.index += 1
                 self.head = [l, c]
+        verde.merge_sort()
 
     def caminhoA(self, x, y):
         l_final = x

@@ -21,6 +21,7 @@ def retornaAtribuicoes():
     return clustering.atribuicoes
 
 # Função para calcular a distância euclidiana entre dois pontos inteiros
+@staticmethod
 def distancia(ponto1, ponto2):
     x1, y1 = ponto1
     x2, y2 = ponto2
@@ -28,6 +29,7 @@ def distancia(ponto1, ponto2):
 
 
 # Função para encontrar o centróide mais próximo de um ponto
+@staticmethod
 def encontrar_centroide_mais_proximo(ponto, centroides):
     distancia_minima = float('inf')
     centroide_mais_proximo = None
@@ -40,6 +42,7 @@ def encontrar_centroide_mais_proximo(ponto, centroides):
 
 
 # Função para atualizar os centroides com base nas atribuições
+@staticmethod
 def atualizar_centroides(pontos, atribuicoes, k):
     novos_centroides = []
     for i in range(k):

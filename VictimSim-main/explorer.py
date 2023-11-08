@@ -160,7 +160,7 @@ class Explorer(AbstractAgent):
         #self.verde.print_elements()
         self.verde.merge_sort()
         #print("Depois do merge")
-        #self.verde.print_elements()
+        #self.vermelho.print_elements()
         #print("-------------------")
 
     def caminhoA(self):
@@ -238,7 +238,7 @@ class Explorer(AbstractAgent):
 
             #print(self.head)
             #self.vermelho.print_elements()
-            #print("-------------------------------")
+            print("-------------------------------")
             #self.finalQueue.print_elements()
             self.finalStack.push([self.rowA, self.columnA])
             aux1 = self.finalStack.pop()

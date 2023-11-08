@@ -47,7 +47,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         data_folder_name = sys.argv[1]
     else:
-        folder_name = str(input("Insira o nome da pasta que deseja utilzar para rodar o programa: "))
-        data_folder_name = os.path.join("datasets", folder_name)
+        #folder_name = str(input("Insira o nome da pasta que deseja utilzar para rodar o programa: "))
+        data_folder_name = os.path.join("datasets", "data_20x20_42vic")
         
     main(data_folder_name)

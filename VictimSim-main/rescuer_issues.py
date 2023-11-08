@@ -1,3 +1,6 @@
+import sys
+
+
 class rescuerIssues:
     vitimas = [] #PODE CONTER VITIMAS REPETIDAS, SE ENCONTRADAS POR MAIS DE UM EXPLORADOR
     finalVitimas = [] #VÍTIMAS NÃO REPETIDAS
@@ -32,9 +35,40 @@ class rescuerIssues:
             if posicao not in rescuerIssues.finalMapa:
                 rescuerIssues.finalMapa.append(posicao)
 
+
     @staticmethod
     def procuraFinalMap(pos):
         for posicao in rescuerIssues.finalMapa:
             if posicao == pos:
                 return True
         return False
+
+    @staticmethod
+    def printFinalMap():
+        print("finalMap")
+        for posicao in rescuerIssues.finalMapa:
+            print(posicao)
+        print("---FIM---")
+        return False
+
+    @staticmethod
+    def menorMaiorL():
+        menor = sys.maxsize
+        maior = -sys.maxsize
+        for posicao in rescuerIssues.finalMapa:
+            if menor > posicao[0]:
+                menor = posicao[0]
+            if maior < posicao[0]:
+                maior = posicao[0]
+        return menor, maior
+
+    @staticmethod
+    def menorMaiorC():
+        menor = sys.maxsize
+        maior = -sys.maxsize
+        for posicao in rescuerIssues.finalMapa:
+            if menor > posicao[1]:
+                menor = posicao[1]
+            if maior < posicao[1]:
+                maior = posicao[1]
+        return menor, maior

@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="FINALIZADO DE VERDADE">
+      <change afterPath="$PROJECT_DIR$/VictimSim-main/DecisionTree.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VictimSim-main/Tree.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VictimSim-main/teste_arvore.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VictimSim-main/vital_signs_132v.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/simulador-resgate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/simulador-resgate.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +29,24 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="tarefa2_fernando" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;lucasjose256&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="88b274b2-747b-439c-b84a-d840c1d91f43" />
+        <option name="url" value="https://github.com/lucasjose256/simulador-resgate.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/VictimSim-main/explorer.py" root0="SKIP_HIGHLIGHTING" />
@@ -45,12 +66,44 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tarefa2__barszcz&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rodrigo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lucas/PycharmProjects/simulador-resgate/VictimSim-main&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lucas\PycharmProjects\simulador-resgate\VictimSim-main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lucas\PycharmProjects\simulador-resgate\VictimSim-main" />
+      <recent name="C:\Users\lucas\PycharmProjects\simulador-resgate" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Tree">
+    <configuration name="Tree" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="simulador-resgate" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main/tools" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\lucas\PycharmProjects\simulador-resgate\VictimSim-main\Tree.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="explorer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="simulador-resgate" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -80,33 +133,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.10" />
+      <option name="SDK_NAME" value="Python 3.11" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="physical_agent" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="simulador-resgate" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/physical_agent.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -159,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Tree" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.stack" />
         <item itemvalue="Python.explorer" />
         <item itemvalue="Python.rescuer" />
-        <item itemvalue="Python.physical_agent" />
       </list>
     </recent_temporary>
   </component>
@@ -428,7 +460,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="fernando" />
+                        <option value="origin/tarefa2_barszcz" />
                       </list>
                     </value>
                   </entry>
@@ -451,6 +483,7 @@
     <MESSAGE value="Finalizado, falta revisar em grupo" />
     <MESSAGE value="FINALIZADO" />
     <MESSAGE value="FINALIZADO DE VERDADE" />
-    <option name="LAST_COMMIT_MESSAGE" value="FINALIZADO DE VERDADE" />
+    <MESSAGE value="untracked files" />
+    <option name="LAST_COMMIT_MESSAGE" value="untracked files" />
   </component>
 </project>

@@ -282,7 +282,7 @@ class Env:
         @param type_str: it is a string for composing the pring
         @param sub: it is a character representing the metric"""
 
-        rescuerIssues.salvar_vetor_em_csv("resultado.csv")
+        rescuerIssues.salvar_vetor_em_csv("salvas.txt")
         if len(victims) > 0:
             sev = []
             grav = []

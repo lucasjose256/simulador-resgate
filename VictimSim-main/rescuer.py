@@ -1024,8 +1024,8 @@ class Rescuer(AbstractAgent):
                     if atribuicoes+1 == self.clt:
                         # print("GUARDOU")
                         # print(f"({rescuerIssues.retornaFinalVitimas()[i][0]}, {rescuerIssues.retornaFinalVitimas()[i][1]})")
-                        pessoa = [rescuerIssues.retornaFinalVitimas()[i][2][0], rescuerIssues.retornaFinalVitimas()[i][0],
-                                  rescuerIssues.retornaFinalVitimas()[i][1], 0, rescuerIssues.retornaClasses()[i]]
+                        pessoa = [rescuerIssues.retornaFinalVitimas()[i][2][0], rescuerIssues.retornaFinalVitimas()[i][1],
+                                  rescuerIssues.retornaFinalVitimas()[i][0], 0, rescuerIssues.retornaClasses()[i]]
                         self.vitimas_cluster.append(rescuerIssues.retornaFinalVitimas()[i])
                         self.pessoasClustering.append(pessoa)
                         self.kit.append(rescuerIssues.retornaFinalVitimas()[i])
@@ -1235,8 +1235,19 @@ class Rescuer(AbstractAgent):
                             self.rtime -= self.COST_FIRST_AID
                             res = self.body.first_aid(seq)  # True when rescued
                             if (res):
-                                string = str(seq) + ", " + str(self.x_atual)  + ", " + str(self.y_atual) + ", " + str(0) + ", " + str(0)
-                                rescuerIssues.vitimaSalva(string)
+                                '''
+                                pessoa = [rescuerIssues.retornaFinalVitimas()[i][2][0],
+                                          rescuerIssues.retornaFinalVitimas()[i][0],
+                                          rescuerIssues.retornaFinalVitimas()[i][1], 0,
+                                          rescuerIssues.retornaClasses()[i]]
+                                '''
+                                i = rescuerIssues.retornaLinhaClasses(seq+1)
+                                if i >= 0:
+                                    #string = str(seq+1) + ", " + str(self.x_atual)  + ", " + str(self.y_atual) + ", " + str(0) + ", " + str(rescuerIssues.retornaClasses()[i])
+                                    string = [seq+1, self.x_atual, self.y_atual, 0, rescuerIssues.retornaClasses()[i]]
+                                    rescuerIssues.vitimaSalva(string)
+                                else:
+                                    print("Erro na hora de encontrar vítima com um ID")
 
                         #if (self.x_atual == self.x_vitima and self.y_atual == self.y_vitima):
                         #    self.retira_vitima(self.x_vitima, self.y_vitima)

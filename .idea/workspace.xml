@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="Finalizado, falta revisar em grupo">
+      <change afterPath="$PROJECT_DIR$/VictimSim-main/tools/compare_predict_target_withMatch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/DecisionTree.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/DecisionTree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/clustering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/environment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VictimSim-main/rescuer.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/rescuer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VictimSim-main/rescuer_issues.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/rescuer_issues.py" afterDir="false" />
     </list>
@@ -56,8 +54,8 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.main">
-    <configuration name="explorer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.compare_predict_target_withMatch">
+    <configuration name="Tree" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="simulador-resgate" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -65,11 +63,34 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.10" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/explorer.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/Tree.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="compare_predict_target_withMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="simulador-resgate" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.10" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main/tools" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/tools/compare_predict_target_withMatch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -86,32 +107,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.10" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="physical_agent" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="simulador-resgate" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/physical_agent.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,11 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.compare_predict_target_withMatch" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.rescuer" />
-        <item itemvalue="Python.explorer" />
+        <item itemvalue="Python.Tree" />
         <item itemvalue="Python.stack" />
-        <item itemvalue="Python.physical_agent" />
+        <item itemvalue="Python.rescuer" />
       </list>
     </recent_temporary>
   </component>
@@ -399,10 +400,37 @@
       <option name="project" value="LOCAL" />
       <updated>1695954126735</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Finalizado, falta revisar em grupo">
+      <created>1699402475845</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1699402475845</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/fernando" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -424,26 +452,6 @@
         </entry>
       </map>
     </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="master" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/fernando" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Rodrigo" />
@@ -453,9 +461,9 @@
     <MESSAGE value="Retirado variáveis e funções não utilizadas" />
     <MESSAGE value="Retirado as partes sem relevância no código, 100% funcional aparentemente" />
     <MESSAGE value="Retirado as partes sem relevância no código, funcionado 100" />
-    <MESSAGE value="Finalizado, falta revisar em grupo" />
     <MESSAGE value="FINALIZADO" />
     <MESSAGE value="FINALIZADO DE VERDADE" />
-    <option name="LAST_COMMIT_MESSAGE" value="FINALIZADO DE VERDADE" />
+    <MESSAGE value="Finalizado, falta revisar em grupo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalizado, falta revisar em grupo" />
   </component>
 </project>

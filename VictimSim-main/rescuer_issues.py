@@ -26,7 +26,7 @@ class rescuerIssues:
             with open(nome_arquivo, 'w', newline='') as arquivo_csv:
                 escritor = csv.writer(arquivo_csv)
                 for item in rescuerIssues.salvas:
-                    escritor.writerow([item])
+                    escritor.writerow(item)
             rescuerIssues.salvo = True
 
     @staticmethod
@@ -77,6 +77,15 @@ class rescuerIssues:
     @staticmethod
     def defineClasses(vetor):
         rescuerIssues.finalClasses = vetor
+
+    @staticmethod
+    def retornaLinhaClasses(id):
+        linha = 0
+        for i in range(len(rescuerIssues.finalVitimas)):
+            if rescuerIssues.finalVitimas[i][2][0] == id:
+                return linha
+            linha += 1
+        return -1
 
     @staticmethod
     def menorMaiorL():

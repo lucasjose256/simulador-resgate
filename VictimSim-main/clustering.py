@@ -23,9 +23,12 @@ def retornaAtribuicoes():
 # Função para calcular a distância euclidiana entre dois pontos inteiros
 @staticmethod
 def distancia(ponto1, ponto2):
-    x1, y1 = ponto1
-    x2, y2 = ponto2
-    return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+    x1, y1, classe1 = ponto1
+    x2, y2, classe2 = ponto2
+    distancia_posicao = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+    distancia_classe = abs(classe1 - classe2)
+    distancia_ponderada = 0.8 * distancia_posicao + 0.2 * distancia_classe
+    return distancia_ponderada
 
 
 # Função para encontrar o centróide mais próximo de um ponto
@@ -48,15 +51,17 @@ def atualizar_centroides(pontos, atribuicoes, k):
     for i in range(k):
         soma_x = 0
         soma_y = 0
+        soma_classe = 0
         count = 0
         for j, ponto in enumerate(pontos):
             if atribuicoes[j] == i:
-                x, y = ponto
+                x, y, classe = ponto
                 soma_x += x
                 soma_y += y
+                soma_classe += classe
                 count += 1
         if count > 0:
-            novo_centroide = (soma_x // count, soma_y // count)  # Use divisão inteira
+            novo_centroide = (soma_x // count, soma_y // count, soma_classe // count)  # Use divisão inteira
             novos_centroides.append(novo_centroide)
     return novos_centroides
 
@@ -65,7 +70,7 @@ def atualizar_centroides(pontos, atribuicoes, k):
 def k_means():
     #pontos = [(staticExplorer.staticExplorer.returnVitFinal()[i][0], staticExplorer.staticExplorer.returnVitFinal()[i][1]) for i in
     #                     range(len(staticExplorer.staticExplorer.returnVitFinal()))]
-    pontos = [(rescuerIssues.retornaFinalVitimas()[i][0], rescuerIssues.retornaFinalVitimas()[i][1]) for i in range(len(rescuerIssues.retornaFinalVitimas()))]
+    pontos = [(rescuerIssues.retornaFinalVitimas()[i][0], rescuerIssues.retornaFinalVitimas()[i][1], rescuerIssues.retornaClasses()[i]) for i in range(len(rescuerIssues.retornaFinalVitimas()))]
     if len(pontos) == 1:
         clustering.k = 1
     elif len(pontos) == 2:

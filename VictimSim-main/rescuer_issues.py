@@ -5,6 +5,7 @@ class rescuerIssues:
     vitimas = [] #PODE CONTER VITIMAS REPETIDAS, SE ENCONTRADAS POR MAIS DE UM EXPLORADOR
     finalVitimas = [] #VÍTIMAS NÃO REPETIDAS
     finalMapa = [] #MAPA FINAL A PARTIR DA JUNÇÃO DO MAPA DE CADA EXPLORADOR
+    finalClasses = [] #CLASSES FINAIS PARA CADA VÍTIMAS, EM ORDEM EM RELAÇÃO À finalVitimas
 
     @staticmethod
     def retornaVitimas():
@@ -17,6 +18,10 @@ class rescuerIssues:
     @staticmethod
     def retornaFinalMap():
         return rescuerIssues.finalMapa
+
+    @staticmethod
+    def retornaClasses():
+        return rescuerIssues.finalClasses
 
     @staticmethod
     def adicionaVitimas(vetor):
@@ -50,6 +55,10 @@ class rescuerIssues:
             print(posicao)
         print("---FIM---")
         return False
+
+    @staticmethod
+    def defineClasses(vetor):
+        rescuerIssues.finalClasses = vetor
 
     @staticmethod
     def menorMaiorL():

@@ -2,6 +2,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import pandas as pd
+from rescuer_issues import rescuerIssues
 
 class DecisionTree:
     def __init__(self, file_path):
@@ -35,5 +36,12 @@ class DecisionTree:
         f1 = f1_score(self.y_test, y_pred, average='weighted')
         return accuracy, precision, recall, f1
 
-    def classify(self, new_data):
-        return self.clf.predict([new_data])
+    def classify(self):
+        matriz = []
+        colunas = ["id", "pSist", "pDiast", "qPA", "pulso", "resp", "gravid", "classe"]
+        for i in range(len(rescuerIssues.finalVitimas)):
+            matriz.append(rescuerIssues.finalVitimas[i][2])
+        dataframe = pd.DataFrame(matriz, columns=colunas)
+        result = dataframe[['qPA', 'pulso', 'resp']]
+
+        return self.clf.predict(result)

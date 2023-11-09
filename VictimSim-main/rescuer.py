@@ -14,11 +14,13 @@ from static_explorer import staticExplorer
 from string_queue import StringQueue
 from stack import stack
 from rescuer_issues import rescuerIssues
+from DecisionTree import DecisionTree
+import csv
 
 ## Classe que define o Agente Rescuer com um plano fixo
 class Rescuer(AbstractAgent):
     def __init__(self, env, config_file, cluster):
-        """ 
+        """
         @param env: a reference to an instance of the environment class
         @param config_file: the absolute path to the agent's config file"""
 
@@ -74,8 +76,9 @@ class Rescuer(AbstractAgent):
         self.kit = None
         self.avarageL = 0
         self.avarageC = 0
-
-
+        self.tree = DecisionTree(r"C:\Users\ferna\Documents\Faculdade\6º Período\Sistemas Inteligentes\Tarefa 1 - Busca Exploratória x Explotação\simulador-resgate\VictimSim-main\datasets\sinais_vitais.txt")
+        self.pessoasClustering = []
+        self.nome_arquivo = ""
 
 
 
@@ -957,6 +960,13 @@ class Rescuer(AbstractAgent):
         if staticExplorer.checked():
             if not clustering.retornaCalculado():
                 rescuerIssues.retirarVitimasRepetidas()
+                #for i in range(len(rescuerIssues.finalVitimas)):
+                #    print(rescuerIssues.finalVitimas[i][2][0])
+                #print("-"*15)
+                rescuerIssues.defineClasses(self.tree.classify().tolist())
+                #for i in range(len(rescuerIssues.finalVitimas)):
+                #    print(f"{i+1}: {rescuerIssues.retornaClasses()[i]}")
+                self.tree.test_tree()
                 clustering.k_means()
 
             if not self.printou_cluster:
@@ -977,8 +987,28 @@ class Rescuer(AbstractAgent):
                     if atribuicoes+1 == self.clt:
                         # print("GUARDOU")
                         # print(f"({rescuerIssues.retornaFinalVitimas()[i][0]}, {rescuerIssues.retornaFinalVitimas()[i][1]})")
+                        pessoa = [rescuerIssues.retornaFinalVitimas()[i][2][0], rescuerIssues.retornaFinalVitimas()[i][0],
+                                  rescuerIssues.retornaFinalVitimas()[i][1], 0, rescuerIssues.retornaClasses()[i]]
                         self.vitimas_cluster.append(rescuerIssues.retornaFinalVitimas()[i])
+                        self.pessoasClustering.append(pessoa)
                 self.printou_cluster = True
+                for i in range(len(self.vitimas_cluster)):
+                    print(self.vitimas_cluster[i][2])
+                if self.clt == 1:
+                    self.nome_arquivo = "cluster1.txt"
+                elif self.clt == 2:
+                    self.nome_arquivo = "cluster2.txt"
+                elif self.clt == 3:
+                    self.nome_arquivo = "cluster3.txt"
+                elif self.clt == 4:
+                    self.nome_arquivo = "cluster4.txt"
+
+                with open(self.nome_arquivo, mode='w', newline='') as arquivo:
+                    writer = csv.writer(arquivo)
+
+                    for pessoa in self.pessoasClustering:
+                        writer.writerow(pessoa)
+
                 #print(f"VITIMAS PARA SEREM RESGASTADAS: {len(self.vitimas_cluster)}")
                 #for i, vitimas in enumerate(self.vitimas_cluster):
                 #    print(f"({vitimas[0]}, {vitimas[1]})")

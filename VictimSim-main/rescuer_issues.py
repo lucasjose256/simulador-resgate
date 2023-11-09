@@ -1,3 +1,4 @@
+import csv
 import sys
 
 
@@ -5,10 +6,27 @@ class rescuerIssues:
     vitimas = [] #PODE CONTER VITIMAS REPETIDAS, SE ENCONTRADAS POR MAIS DE UM EXPLORADOR
     finalVitimas = [] #VÍTIMAS NÃO REPETIDAS
     finalMapa = [] #MAPA FINAL A PARTIR DA JUNÇÃO DO MAPA DE CADA EXPLORADOR
+    salvas = []
+    salvo = False
 
     @staticmethod
     def retornaVitimas():
         return rescuerIssues.vitimas
+
+    @staticmethod
+    def vitimaSalva(string):
+        if not string in rescuerIssues.salvas:
+            rescuerIssues.salvas.append(string)
+
+
+    @staticmethod
+    def salvar_vetor_em_csv(nome_arquivo):
+        if not  rescuerIssues.salvo:
+            with open(nome_arquivo, 'w', newline='') as arquivo_csv:
+                escritor = csv.writer(arquivo_csv)
+                for item in rescuerIssues.salvas:
+                    escritor.writerow([item])
+            rescuerIssues.salvo = True
 
     @staticmethod
     def retornaFinalVitimas():

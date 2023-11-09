@@ -181,6 +181,7 @@ class PhysAgent:
         # Mark the victim as found by this agent.
         # More than one agent can drop a first-aid package to the same victim, so it's a list
         self.env.saved[seq].append(self)
+
         return True
 
     def get_found_victims(self):
@@ -200,14 +201,13 @@ class PhysAgent:
     def get_saved_victims(self):
         """ Public method for returning the number of saved victims by the agent
         @returns a list with the sequential number of saved victims """
-
         victims = []
 
         v = 0
         for rescuers in self.env.saved:
             if self in rescuers:
                 victims.append(v)
-            v = v + 1
+                v = v + 1
   
         return victims 
                 

@@ -5,6 +5,7 @@
 import os
 import random
 import sys
+from math import floor
 
 from abstract_agent import AbstractAgent
 from physical_agent import PhysAgent
@@ -71,9 +72,10 @@ class Rescuer(AbstractAgent):
         self.check = False
         self.visitas = StringQueue()
         self.stop = False
-        self.kit = None
+        self.kit = []
         self.avarageL = 0
         self.avarageC = 0
+        self.salvas = []
 
 
 
@@ -320,10 +322,22 @@ class Rescuer(AbstractAgent):
     def isInCluster(self, l, c):
         for i in range(len(self.grupo)):
             if(self.grupo[i][0] == l and self.grupo[i][1] == c):
-                self.grupo[i][0] = sys.maxsize
-                self.grupo[i][1] = sys.maxsize
+                #self.grupo[i][0] = sys.maxsize
+                #self.grupo[i][1] = sys.maxsize
                 return True
         return False
+
+    """def isInClusterKIT(self, l, c):
+        print("RECEBI: " + str(l) + " , " + str(c))
+        t = False
+        for i in range(len(self.kit)):
+            print("TENHO: " + str(self.kit[i][0]) + " , " + str(self.kit[i][1]))
+            if(self.kit[i][0] == l and self.kit[i][1] == c):
+                print("ACHEI")
+                #self.kit[i][0] = sys.maxsize
+                #self.kit[i][1] = sys.maxsize
+                return True
+        return False"""
 
     def encontraGenetica(self):
 
@@ -354,7 +368,7 @@ class Rescuer(AbstractAgent):
             cC = self.grupo[0][1]
             pL = lC - la
             pC = cC - ca
-            self.probabilityC(pL, pC, "st")
+            self.probabilityC(floor(self.avarageL), floor(self.avarageC), "st")
             self.firstVictim = False
         victimFound = False
         self.finalStack.esvaziar_pilha()
@@ -362,6 +376,7 @@ class Rescuer(AbstractAgent):
             re = 0
             total = 0
             re += 1
+            self.fixProb()
             """print ("--------------")
             #print("1º vitima: " + str(lC) + "," + str(cC))
             print("time: " + str(self.rtime))
@@ -711,6 +726,16 @@ class Rescuer(AbstractAgent):
             self.pDLD = self.pDLD*0.001
             self.pDLU = self.pDLU*0.001
 
+        if(self.pT < 0.01):
+            self.pDown = self.pDown*100
+            self.pUp = self.pUp*100
+            self.pRight = self.pRight*100
+            self.pLeft = self.pLeft*100
+            self.pDRD = self.pDRD*100
+            self.pDRU = self.pDRU*100
+            self.pDLD = self.pDLD*100
+            self.pDLU = self.pDLU*100
+
         self.fixProb()
     def fixProbability(self):
             self.pT = self.pRight+self.pLeft+self.pUp+self.pDown+self.pDRU+self.pDRD+self.pDLU+self.pDLD
@@ -819,6 +844,16 @@ class Rescuer(AbstractAgent):
             self.pDRU = self.pDRU*0.001
             self.pDLD = self.pDLD*0.001
             self.pDLU = self.pDLU*0.001
+
+        if(self.pT < 0.01):
+            self.pDown = self.pDown*100
+            self.pUp = self.pUp*100
+            self.pRight = self.pRight*100
+            self.pLeft = self.pLeft*100
+            self.pDRD = self.pDRD*100
+            self.pDRU = self.pDRU*100
+            self.pDLD = self.pDLD*100
+            self.pDLU = self.pDLU*100
 
         self.fixProb()
 
@@ -978,6 +1013,7 @@ class Rescuer(AbstractAgent):
                         # print("GUARDOU")
                         # print(f"({rescuerIssues.retornaFinalVitimas()[i][0]}, {rescuerIssues.retornaFinalVitimas()[i][1]})")
                         self.vitimas_cluster.append(rescuerIssues.retornaFinalVitimas()[i])
+                        self.kit.append(rescuerIssues.retornaFinalVitimas()[i])
                 self.printou_cluster = True
                 #print(f"VITIMAS PARA SEREM RESGASTADAS: {len(self.vitimas_cluster)}")
                 #for i, vitimas in enumerate(self.vitimas_cluster):
@@ -991,7 +1027,9 @@ class Rescuer(AbstractAgent):
                   self.cMenor, self.cMaior = rescuerIssues.menorMaiorC()
                   self.check = True
                   self.grupo = self.vitimas_cluster
-                  self.kit = self.vitimas_cluster
+                  #self.kit =  (self.vitimas_cluster).copy()
+
+
                   q = 0
                   qL = 0
                   qC = 0
@@ -1153,19 +1191,23 @@ class Rescuer(AbstractAgent):
                     else:
                         self.rtime -= self.COST_LINE
 
-                    self.x_atual += dx
-                    self.y_atual += dy
+
 
                     # Rescue the victim at the current position
                     if result == PhysAgent.EXECUTED:
+                        self.x_atual += dx
+                        self.y_atual += dy
                         # check if there is a victim at the current position
                         seq = self.body.check_for_victim()
                         if seq >= 0:
-                            #print("aaaaaaaaaaaaaaa")
                             self.rtime -= self.COST_FIRST_AID
                             res = self.body.first_aid(seq)  # True when rescued
-                        if (self.x_atual == self.x_vitima and self.y_atual == self.y_vitima):
-                            self.retira_vitima(self.x_vitima, self.y_vitima)
+                            if (res):
+                                string = str(seq) + ", " + str(self.x_atual)  + ", " + str(self.y_atual) + ", " + str(0) + ", " + str(0)
+                                rescuerIssues.vitimaSalva(string)
+
+                        #if (self.x_atual == self.x_vitima and self.y_atual == self.y_vitima):
+                        #    self.retira_vitima(self.x_vitima, self.y_vitima)
                     return True
 
 
@@ -1235,26 +1277,34 @@ class Rescuer(AbstractAgent):
                     self.y_atual += dy
                     #print("Esta em C: " + str(self.x_atual) + " E L: " + str(self.y_atual))
                     # Rescue the victim at the current position
-                    if result == PhysAgent.EXECUTED:
+                    #if result == PhysAgent.EXECUTED:
                         # check if there is a victim at the current position
 
-                        seq = self.body.check_for_victim()
-                        if seq >= 0:
-                            self.rtime -= self.COST_FIRST_AID
-                            res = self.body.first_aid(seq)  # True when rescued
-                        if (self.x_atual == self.x_vitima and self.y_atual == self.y_vitima):
-                            self.retira_vitima(self.x_vitima, self.y_vitima)
+                        #seq = self.body.check_for_victim()
+                        #if seq >= 0:
+                        #    self.rtime -= self.COST_FIRST_AID
+                        #    res = self.body.first_aid(seq)  # True when rescued
+                        #if (self.x_atual == self.x_vitima and self.y_atual == self.y_vitima):
+                        #    self.retira_vitima(self.x_vitima, self.y_vitima)
                             #print("-" * 15)
                             #print(f"RESCUER {self.clt}")
                             #print(f"VITIMAS PARA SEREM RESGASTADAS: {len(self.vitimas_cluster)}")
                             #for i, vitimas in enumerate(self.vitimas_cluster):
                             #    print(f"({vitimas[0]}, {vitimas[1]})")
                             #print("-" * 15)
-                            self.caminhoA_calculado = False
-                            self.direcao_adicionada = False
-                            self.plano_adicionado = False
+                        #    self.caminhoA_calculado = False
+                        #    self.direcao_adicionada = False
+                        #    self.plano_adicionado = False
                     if self.x_atual == 0 and self.y_atual == 0:
                         #print("false2")
                         return False
 
         return True
+
+    """def addVictim(self, l, c):
+        for pos in self.salvas:
+            #print("L: " + str(pos[0]) + " C: " + str(pos[1]))
+            if pos[0] == l and pos[1] == c:
+                return False
+        self.salvas.append([l, c])
+        return True"""

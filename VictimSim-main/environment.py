@@ -9,6 +9,7 @@ import csv
 import time
 from abstract_agent import AbstractAgent
 from physical_agent import PhysAgent
+from rescuer_issues import rescuerIssues
 
 
 ## Class Environment
@@ -281,7 +282,7 @@ class Env:
         @param type_str: it is a string for composing the pring
         @param sub: it is a character representing the metric"""
 
-
+        rescuerIssues.salvar_vetor_em_csv("resultado.csv")
         if len(victims) > 0:
             sev = []
             grav = []

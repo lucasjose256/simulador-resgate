@@ -220,7 +220,7 @@ class Explorer(AbstractAgent):
         #    self.body.walk(0, 0)
         #    return True
 
-        if self.rtime < (abs(self.row) + abs(self.column))*1.75 + 10 and not self.a:
+        if self.rtime < (abs(self.row) + abs(self.column))*(0.65*(1 + math.log(abs(self.row) + abs(self.column) + 2,5) )) + 20 and not self.a:
 
 
             #ALGORITMO A*

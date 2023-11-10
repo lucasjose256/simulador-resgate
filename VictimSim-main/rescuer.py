@@ -1,7 +1,7 @@
 ##  RESCUER AGENT
 ### @Author: Tacla (UTFPR)
 ### Demo of use of VictimSim
-
+import math
 import os
 import random
 import sys
@@ -77,7 +77,7 @@ class Rescuer(AbstractAgent):
         self.kit = []
         self.avarageL = 0
         self.avarageC = 0
-        self.tree = DecisionTree(r"C:\Users\ferna\Documents\Faculdade\6º Período\Sistemas Inteligentes\Tarefa 1 - Busca Exploratória x Explotação\simulador-resgate\VictimSim-main\datasets\sinais_vitais.txt")
+        self.tree = DecisionTree(r"C:\Users\Rodrigo\PycharmProjects\simulador-resgate\VictimSim-main\datasets\sinais_vitais.txt")
         self.pessoasClustering = []
         self.nome_arquivo = ""
         self.salvas = []
@@ -624,11 +624,11 @@ class Rescuer(AbstractAgent):
             #pDRD = 1.0
             #pDLU = 1.0
             #pDLD = 1.0
-        stBoost = 10
+        stBoost = 12
         victimBoost = 5
-        nonVictimBoost = 0.94
-        wallVictimBoost = 0.1
-        obstacleVictimBoost = 0.85
+        nonVictimBoost = 2
+        wallVictimBoost = 0.001
+        obstacleVictimBoost = 0.001
         if(st == "st"):
           if(pL > 0):
             self.pDown = self.pDown*stBoost
@@ -756,10 +756,10 @@ class Rescuer(AbstractAgent):
 
     def fixProb(self):
         self.pT = self.pRight+self.pLeft+self.pUp+self.pDown+self.pDRU+self.pDRD+self.pDLU+self.pDLD
-        pDown = 0.04
-        pLimit = 0.94
-        pMin = 0.05
-        pMax = 0.94
+        pDown = 0.001
+        pLimit = 0.99
+        pMin = 0.001
+        pMax = 0.99
 
 
         if (self.pRight/self.pT) < pDown:
@@ -813,30 +813,31 @@ class Rescuer(AbstractAgent):
         self.pT = self.pRight+self.pLeft+self.pUp+self.pDown+self.pDRU+self.pDRD+self.pDLU+self.pDLD
 
     def boostCenter(self):
+        b = 10
         if(self.lAtual - self.avarageL < 0):
-            self.pDown = self.pDown*abs(1 + abs(self.lAtual - self.avarageL))*1.2
+            self.pDown = self.pDown*math.log(abs(1 + abs(self.lAtual - self.avarageL))*1.2, b)
             if(self.cAtual - self.avarageC < 0):
-                self.pDRD = self.pDRD*abs(1 + abs(self.lAtual - self.avarageL)/2)
+                self.pDRD = self.pDRD*math.log(abs(1 + abs(self.lAtual - self.avarageL)/2), b)
             if(self.cAtual - self.avarageC > 0):
-                self.pDLD = self.pDLD*abs(1 + abs(self.lAtual - self.avarageL)/2)
+                self.pDLD = self.pDLD*math.log(abs(1 + abs(self.lAtual - self.avarageL)/2), b)
         if(self.lAtual - self.avarageL > 0):
-            self.pUp = self.pUp*abs(1 + abs(self.lAtual - self.avarageL))*1.2
+            self.pUp = self.pUp*math.log(abs(1 + abs(self.lAtual - self.avarageL))*1.2, b)
             if(self.cAtual - self.avarageC < 0):
-                self.pDRU = self.pDRU*abs(1 + abs(self.lAtual - self.avarageL)/2)
+                self.pDRU = self.pDRU*math.log(abs(1 + abs(self.lAtual - self.avarageL)/2), b)
             if(self.cAtual - self.avarageC > 0):
-                self.pDLU = self.pDLU*abs(1 + abs(self.lAtual - self.avarageL)/2)
+                self.pDLU = self.pDLU*math.log(abs(1 + abs(self.lAtual - self.avarageL)/2), b)
         if(self.cAtual - self.avarageC < 0):
-            self.pRight = self.pRight*abs(1 + abs(self.cAtual - self.avarageC))*1.2
+            self.pRight = self.pRight*math.log(abs(1 + abs(self.cAtual - self.avarageC))*1.2, b)
             if(self.lAtual - self.avarageL < 0):
-                self.pDRD = self.pDRD*abs(1 + abs(self.cAtual - self.avarageC)/2)
+                self.pDRD = self.pDRD*math.log(abs(1 + abs(self.cAtual - self.avarageC)/2), b)
             if(self.lAtual - self.avarageL > 0):
-                self.pDRU = self.pDRU*abs(1 + abs(self.cAtual - self.avarageC)/2)
+                self.pDRU = self.pDRU*math.log(abs(1 + abs(self.cAtual - self.avarageC)/2), b)
         if(self.cAtual - self.avarageC > 0):
-            self.pLeft = self.pRight*abs(1 + abs(self.cAtual - self.avarageC))*1.2
+            self.pLeft = self.pRight*math.log(abs(1 + abs(self.cAtual - self.avarageC))*1.2, b)
             if(self.lAtual - self.avarageL < 0):
-                self.pDLD = self.pDRD*abs(1 + abs(self.cAtual - self.avarageC)/2)
+                self.pDLD = self.pDRD*math.log(abs(1 + abs(self.cAtual - self.avarageC)/2), b)
             if(self.lAtual - self.avarageL > 0):
-                self.pDLU = self.pDRU*abs(1 + abs(self.cAtual - self.avarageC)/2)
+                self.pDLU = self.pDRU*math.log(abs(1 + abs(self.cAtual - self.avarageC)/2), b)
         self.pT = self.pRight+self.pLeft+self.pUp+self.pDown+self.pDRU+self.pDRD+self.pDLU+self.pDLD
     def probababilitySelector(self):
         self.pT = self.pRight+self.pLeft+self.pUp+self.pDown+self.pDRU+self.pDRD+self.pDLU+self.pDLD
@@ -1090,7 +1091,7 @@ class Rescuer(AbstractAgent):
                         self.direcao_adicionada = False
                         self.plano_adicionado = False
                 '''
-                if ((self.rtime) < (abs(self.lAtual) + abs(self.cAtual)) * 3 + 15) and (self.lAtual != 0 or self.cAtual != 0) and not self.plano_adicionado:
+                if ((self.rtime) < (abs(self.lAtual) + abs(self.cAtual)) * 4.2 + 15) and (self.lAtual != 0 or self.cAtual != 0) and not self.plano_adicionado:
                     #print("Esta em C: " + str(self.cAtual) + " E L: " + str(self.lAtual))
                     # print(f"RESCUER PAROU EM {self.x_atual}, {self.y_atual}")
                     # print(f"RESCUER {self.clt} VOLTANDO PARA BASE")

@@ -8,7 +8,7 @@ class rescuerIssues:
     finalMapa = [] #MAPA FINAL A PARTIR DA JUNÇÃO DO MAPA DE CADA EXPLORADOR
     finalClasses = [] #CLASSES FINAIS PARA CADA VÍTIMAS, EM ORDEM EM RELAÇÃO À finalVitimas
     salvas = []
-    salvo = False
+    cluster = 1
 
     @staticmethod
     def retornaVitimas():
@@ -22,12 +22,12 @@ class rescuerIssues:
 
     @staticmethod
     def salvar_vetor_em_csv(nome_arquivo):
-        if not  rescuerIssues.salvo:
-            with open(nome_arquivo, 'w', newline='') as arquivo_csv:
+        if True:
+            with open("cluster " + str(rescuerIssues.cluster), 'w', newline='') as arquivo_csv:
                 escritor = csv.writer(arquivo_csv)
                 for item in rescuerIssues.salvas:
                     escritor.writerow(item)
-            rescuerIssues.salvo = True
+            rescuerIssues.cluster += 1
 
     @staticmethod
     def retornaFinalVitimas():

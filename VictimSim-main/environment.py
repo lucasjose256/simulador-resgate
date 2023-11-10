@@ -172,7 +172,7 @@ class Env:
 
                 if self.walls[x][y] == 1:
                     wall_rect = pygame.Rect(x * cell_w + 1, y * cell_h + 1, cell_w - 2, cell_h - 2)
-                    pygame.draw.rect(self.screen, Env.BLACK, wall_rect)                   
+                    pygame.draw.rect(self.screen, Env.BLACK, wall_rect)
 
                 # Paint visited cells
                 if self.visited[x][y] != (0,0,0):
@@ -182,7 +182,7 @@ class Env:
 
         # Draw a marker at the base
         rect = pygame.Rect(self.dic["BASE"][0] * cell_w, self.dic["BASE"][1] * cell_h, cell_w, cell_h)
-        pygame.draw.rect(self.screen, Env.CYAN, rect, 4)       
+        pygame.draw.rect(self.screen, Env.CYAN, rect, 4)
 
         # Draw the victims
         v=0
@@ -229,7 +229,7 @@ class Env:
         while running:
             # Handle events
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:                  
+                if event.type == pygame.QUIT:
                     running = False
                     
             # control whether or not there are active or idle agents
@@ -293,25 +293,25 @@ class Env:
                 tot_grav = tot_grav + self.gravity[v]
 
 
-            print(f"\n{type_str} victims: (id, severity, gravity)")
+            #print(f"\n{type_str} victims: (id, severity, gravity)")
             for i in range(len(victims)):
                 print(f"({victims[i]:d}, {sev[i]:d}, {grav[i]:.1f})", end=' ')
 
-            print("\n")
-            print(f"Critical victims {type_str}     (V{sub}1) = {sev.count(1):3d} out of {self.severity.count(1)} ({100*sev.count(1)/self.severity.count(1):.1f})%")
-            print(f"Instable victims {type_str}     (V{sub}2) = {sev.count(2):3d} out of {self.severity.count(2)} ({100*sev.count(2)/self.severity.count(2):.1f})%")
-            print(f"Pot. inst. victims {type_str}   (V{sub}3) = {sev.count(3):3d} out of {self.severity.count(3)} ({100*sev.count(3)/self.severity.count(3):.1f})%")
-            print(f"Stable victims {type_str}       (V{sub}4) = {sev.count(4):3d} out of {self.severity.count(4)} ({100*sev.count(4)/self.severity.count(4):.1f})%")
-            print("--------------------------------------")
-            print(f"Total of {type_str} victims     (V{sub})  = {len(sev):3d} ({100*float(len(sev)/self.nb_of_victims):.2f}%)")
+            #print("\n")
+            #print(f"Critical victims {type_str}     (V{sub}1) = {sev.count(1):3d} out of {self.severity.count(1)} ({100*sev.count(1)/self.severity.count(1):.1f})%")
+            #print(f"Instable victims {type_str}     (V{sub}2) = {sev.count(2):3d} out of {self.severity.count(2)} ({100*sev.count(2)/self.severity.count(2):.1f})%")
+            #print(f"Pot. inst. victims {type_str}   (V{sub}3) = {sev.count(3):3d} out of {self.severity.count(3)} ({100*sev.count(3)/self.severity.count(3):.1f})%")
+            #print(f"Stable victims {type_str}       (V{sub}4) = {sev.count(4):3d} out of {self.severity.count(4)} ({100*sev.count(4)/self.severity.count(4):.1f})%")
+            #print("--------------------------------------")
+            #print(f"Total of {type_str} victims     (V{sub})  = {len(sev):3d} ({100*float(len(sev)/self.nb_of_victims):.2f}%)")
 
             weighted = ((6*sev.count(1) + 3*sev.count(2) + 2*sev.count(3) + sev.count(4))/
             (6*self.severity.count(1)+3*self.severity.count(2)+2*self.severity.count(3)+self.severity.count(4)))
 
-            print(f"Weighted {type_str} victims per severity (V{sub}g) = {weighted:.2f}\n")
+            #print(f"Weighted {type_str} victims per severity (V{sub}g) = {weighted:.2f}\n")
             
-            print(f"Sum of gravities of all {type_str} victims = {tot_grav:.2f} of a total of {self.sum_gravity:.2f}")
-            print(f"  % of gravities of all {type_str} victims = {tot_grav/self.sum_gravity:.2f}")
+            #print(f"Sum of gravities of all {type_str} victims = {tot_grav:.2f} of a total of {self.sum_gravity:.2f}")
+            #print(f"  % of gravities of all {type_str} victims = {tot_grav/self.sum_gravity:.2f}")
         else:
             print(f"No {type_str} victims")
 

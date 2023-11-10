@@ -16,52 +16,48 @@ class ExplorerDrawnMap:
         rowAUX = self.find_row_with_right([current_positionROW, current_positionCOLUMN])
         if(direcao == 1):
             while(not priority):
-                if isinstance(self.matrix_list[rowAUX][3], int):
-                   if self.matrix_list[rowAUX][3] == 0:
-                      if((self.find_row_with_right([current_positionROW, current_positionCOLUMN + 1])  == "FALSE") or task):
-                        return "RIGHT"
-                if isinstance(self.matrix_list[rowAUX][1], int):
-                   if self.matrix_list[rowAUX][1] == 0:
-                       if(self.find_row_with_right([current_positionROW - 1, current_positionCOLUMN])  == "FALSE" or task):
-                         return "UP"
-                if isinstance(self.matrix_list[rowAUX][2], int):
-                   if self.matrix_list[rowAUX][2] == 0:
-                       if(self.find_row_with_right([current_positionROW + 1, current_positionCOLUMN]) == "FALSE" or task):
-                        return "DOWN"
                 if isinstance(self.matrix_list[rowAUX][4], int):
                    if self.matrix_list[rowAUX][4] == 0:
                       if(self.find_row_with_right([current_positionROW, current_positionCOLUMN - 1]) == "FALSE" or task):
                         return "LEFT"
+                if isinstance(self.matrix_list[rowAUX][1], int):
+                   if self.matrix_list[rowAUX][1] == 0:
+                       if(self.find_row_with_right([current_positionROW - 1, current_positionCOLUMN])  == "FALSE" or task):
+                         return "UP"
+                if isinstance(self.matrix_list[rowAUX][3], int):
+                   if self.matrix_list[rowAUX][3] == 0:
+                      if((self.find_row_with_right([current_positionROW, current_positionCOLUMN + 1])  == "FALSE") or task):
+                        return "RIGHT"
+                if isinstance(self.matrix_list[rowAUX][2], int):
+                   if self.matrix_list[rowAUX][2] == 0:
+                       if(self.find_row_with_right([current_positionROW + 1, current_positionCOLUMN]) == "FALSE" or task):
+                        return "DOWN"
                 if task:
                     break
                 task = True
         elif(direcao == 2):
             while(not priority):
-                if isinstance(self.matrix_list[rowAUX][1], int):
-                   if self.matrix_list[rowAUX][1] == 0:
-                       if(self.find_row_with_right([current_positionROW - 1, current_positionCOLUMN])  == "FALSE" or task):
-                        return "UP"
-                if isinstance(self.matrix_list[rowAUX][4], int):
-                   if self.matrix_list[rowAUX][4] == 0:
-                      if(self.find_row_with_right([current_positionROW, current_positionCOLUMN - 1]) == "FALSE" or task):
-                        return "LEFT"
                 if isinstance(self.matrix_list[rowAUX][3], int):
                    if self.matrix_list[rowAUX][3] == 0:
                       if((self.find_row_with_right([current_positionROW, current_positionCOLUMN + 1])  == "FALSE") or task):
                         return "RIGHT"
+                if isinstance(self.matrix_list[rowAUX][4], int):
+                   if self.matrix_list[rowAUX][4] == 0:
+                      if(self.find_row_with_right([current_positionROW, current_positionCOLUMN - 1]) == "FALSE" or task):
+                        return "LEFT"
                 if isinstance(self.matrix_list[rowAUX][2], int):
                    if self.matrix_list[rowAUX][2] == 0:
                        if(self.find_row_with_right([current_positionROW + 1, current_positionCOLUMN]) == "FALSE" or task):
                         return "DOWN"
+                if isinstance(self.matrix_list[rowAUX][1], int):
+                   if self.matrix_list[rowAUX][1] == 0:
+                       if(self.find_row_with_right([current_positionROW - 1, current_positionCOLUMN])  == "FALSE" or task):
+                        return "UP"
                 if task:
                     break
                 task = True
         elif(direcao == 3):
             while(not priority):
-                if isinstance(self.matrix_list[rowAUX][3], int):
-                   if self.matrix_list[rowAUX][3] == 0:
-                      if((self.find_row_with_right([current_positionROW, current_positionCOLUMN + 1])  == "FALSE") or task):
-                        return "RIGHT"
                 if isinstance(self.matrix_list[rowAUX][2], int):
                    if self.matrix_list[rowAUX][2] == 0:
                        if(self.find_row_with_right([current_positionROW + 1, current_positionCOLUMN]) == "FALSE" or task):
@@ -70,6 +66,10 @@ class ExplorerDrawnMap:
                    if self.matrix_list[rowAUX][1] == 0:
                        if(self.find_row_with_right([current_positionROW - 1, current_positionCOLUMN])  == "FALSE" or task):
                         return "UP"
+                if isinstance(self.matrix_list[rowAUX][3], int):
+                   if self.matrix_list[rowAUX][3] == 0:
+                      if((self.find_row_with_right([current_positionROW, current_positionCOLUMN + 1])  == "FALSE") or task):
+                        return "RIGHT"
                 if isinstance(self.matrix_list[rowAUX][4], int):
                    if self.matrix_list[rowAUX][4] == 0:
                       if(self.find_row_with_right([current_positionROW, current_positionCOLUMN - 1]) == "FALSE" or task):
@@ -79,14 +79,6 @@ class ExplorerDrawnMap:
                 task = True
         elif(direcao == 4):
             while(not priority):
-                if isinstance(self.matrix_list[rowAUX][2], int):
-                   if self.matrix_list[rowAUX][2] == 0:
-                       if(self.find_row_with_right([current_positionROW + 1, current_positionCOLUMN]) == "FALSE" or task):
-                        return "DOWN"
-                if isinstance(self.matrix_list[rowAUX][3], int):
-                   if self.matrix_list[rowAUX][3] == 0:
-                      if((self.find_row_with_right([current_positionROW, current_positionCOLUMN + 1])  == "FALSE") or task):
-                        return "RIGHT"
                 if isinstance(self.matrix_list[rowAUX][1], int):
                    if self.matrix_list[rowAUX][1] == 0:
                        if(self.find_row_with_right([current_positionROW - 1, current_positionCOLUMN])  == "FALSE" or task):
@@ -95,6 +87,14 @@ class ExplorerDrawnMap:
                    if self.matrix_list[rowAUX][4] == 0:
                       if(self.find_row_with_right([current_positionROW, current_positionCOLUMN - 1]) == "FALSE" or task):
                         return "LEFT"
+                if isinstance(self.matrix_list[rowAUX][3], int):
+                   if self.matrix_list[rowAUX][3] == 0:
+                      if((self.find_row_with_right([current_positionROW, current_positionCOLUMN + 1])  == "FALSE") or task):
+                        return "RIGHT"
+                if isinstance(self.matrix_list[rowAUX][2], int):
+                   if self.matrix_list[rowAUX][2] == 0:
+                       if(self.find_row_with_right([current_positionROW + 1, current_positionCOLUMN]) == "FALSE" or task):
+                        return "DOWN"
                 if task:
                     break
                 task = True

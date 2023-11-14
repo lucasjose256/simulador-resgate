@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from sklearn import tree
 import pandas as pd
 
-with open(r'C:\Users\lucas\PycharmProjects\simulador-resgate\VictimSim-main\vital_signs_132v.txt', 'r') as arquivo:
+with open('/Users/lucasbarszcz/PycharmProjects/simulador-resgate/VictimSim-main/vital_signs_132v.txt', 'r') as arquivo:
     # Lê as linhas do arquivo
     linhas = arquivo.readlines()
 
@@ -25,7 +25,7 @@ print(df)
 X = df[['qPA', 'pulso', 'resp']]
 y = df['classe']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-clf = tree.DecisionTreeClassifier(random_state=42)
+clf = tree.DecisionTreeClassifier(random_state=42,)
 clf.fit(X_train, y_train)
 
 print(clf.predict(X))

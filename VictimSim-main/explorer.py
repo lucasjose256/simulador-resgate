@@ -159,6 +159,8 @@ class Explorer(AbstractAgent):
         #print("Antes do merge")
         #self.verde.print_elements()
         self.verde.merge_sort()
+        #if(self.verde.size() > 20):
+        #    self.verde.reduzir_pela_metade()
         #print("Depois do merge")
         #self.vermelho.print_elements()
         #print("-------------------")
@@ -220,7 +222,7 @@ class Explorer(AbstractAgent):
         #    self.body.walk(0, 0)
         #    return True
 
-        if self.rtime < (abs(self.row) + abs(self.column))*(0.65*(1 + math.log(abs(self.row) + abs(self.column) + 2,5) )) + 20 and not self.a:
+        if self.rtime < (abs(self.row) + abs(self.column))*(0.66*(1 + math.log(abs(self.row) + abs(self.column) + 2,5) )) + 20 and not self.a:
 
 
             #ALGORITMO A*

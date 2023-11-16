@@ -624,8 +624,8 @@ class Rescuer(AbstractAgent):
             #pDRD = 1.0
             #pDLU = 1.0
             #pDLD = 1.0
-        stBoost = 12
-        victimBoost = 5
+        stBoost = 20
+        victimBoost = 10
         nonVictimBoost = 2
         wallVictimBoost = 0.001
         obstacleVictimBoost = 0.001

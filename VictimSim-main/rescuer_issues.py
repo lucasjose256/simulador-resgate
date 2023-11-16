@@ -23,11 +23,10 @@ class rescuerIssues:
     @staticmethod
     def salvar_vetor_em_csv(nome_arquivo):
         if True:
-            with open("cluster " + str(rescuerIssues.cluster), 'w', newline='') as arquivo_csv:
+            with open(nome_arquivo, 'w', newline='') as arquivo_csv:
                 escritor = csv.writer(arquivo_csv)
                 for item in rescuerIssues.salvas:
                     escritor.writerow(item)
-            rescuerIssues.cluster += 1
 
     @staticmethod
     def retornaFinalVitimas():

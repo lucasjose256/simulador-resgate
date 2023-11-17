@@ -77,7 +77,7 @@ class Rescuer(AbstractAgent):
         self.kit = []
         self.avarageL = 0
         self.avarageC = 0
-        self.tree = DecisionTree(r"C:\Users\Rodrigo\PycharmProjects\simulador-resgate\VictimSim-main\datasets\sinais_vitais.txt")
+        self.tree = DecisionTree("sinais_vitais.txt")
         self.pessoasClustering = []
         self.nome_arquivo = ""
         self.salvas = []
@@ -1031,8 +1031,8 @@ class Rescuer(AbstractAgent):
                         self.pessoasClustering.append(pessoa)
                         self.kit.append(rescuerIssues.retornaFinalVitimas()[i])
                 self.printou_cluster = True
-                for i in range(len(self.vitimas_cluster)):
-                    print(self.vitimas_cluster[i][2])
+                #for i in range(len(self.vitimas_cluster)):
+                #    print(self.vitimas_cluster[i][2])
                 if self.clt == 1:
                     self.nome_arquivo = "cluster1.txt"
                 elif self.clt == 2:

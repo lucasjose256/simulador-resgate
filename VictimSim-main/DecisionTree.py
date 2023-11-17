@@ -34,6 +34,10 @@ class DecisionTree:
         precision = precision_score(self.y_test, y_pred, average='weighted')
         recall = recall_score(self.y_test, y_pred, average='weighted')
         f1 = f1_score(self.y_test, y_pred, average='weighted')
+        print("Acurácia:", accuracy)
+        print("Precisão:", precision)
+        print("Recall:", recall)
+        print("F1-Score:", f1)
         return accuracy, precision, recall, f1
 
     def classify(self):

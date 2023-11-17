@@ -294,8 +294,8 @@ class Env:
 
 
             #print(f"\n{type_str} victims: (id, severity, gravity)")
-            for i in range(len(victims)):
-                print(f"({victims[i]:d}, {sev[i]:d}, {grav[i]:.1f})", end=' ')
+            #for i in range(len(victims)):
+            #    print(f"({victims[i]:d}, {sev[i]:d}, {grav[i]:.1f})", end=' ')
 
             #print("\n")
             #print(f"Critical victims {type_str}     (V{sub}1) = {sev.count(1):3d} out of {self.severity.count(1)} ({100*sev.count(1)/self.severity.count(1):.1f})%")
@@ -305,8 +305,8 @@ class Env:
             #print("--------------------------------------")
             #print(f"Total of {type_str} victims     (V{sub})  = {len(sev):3d} ({100*float(len(sev)/self.nb_of_victims):.2f}%)")
 
-            weighted = ((6*sev.count(1) + 3*sev.count(2) + 2*sev.count(3) + sev.count(4))/
-            (6*self.severity.count(1)+3*self.severity.count(2)+2*self.severity.count(3)+self.severity.count(4)))
+            #weighted = ((6*sev.count(1) + 3*sev.count(2) + 2*sev.count(3) + sev.count(4))/
+            #(6*self.severity.count(1)+3*self.severity.count(2)+2*self.severity.count(3)+self.severity.count(4)))
 
             #print(f"Weighted {type_str} victims per severity (V{sub}g) = {weighted:.2f}\n")
             

@@ -57,6 +57,15 @@ class StringQueue:
         for string in self.queue:
             print(string)
 
+    def reduzir_pela_metade(self):
+        if len(self.queue) > 1:
+            metade_index = len(self.queue) // 2
+            novo_vetor = self.queue[:metade_index]
+            return novo_vetor
+        else:
+            return None
+
+
     def merge_sort(self):
         self.queue = self._merge_sort_helper(self.queue)
 

@@ -77,7 +77,7 @@ class Rescuer(AbstractAgent):
         self.kit = []
         self.avarageL = 0
         self.avarageC = 0
-        self.tree = DecisionTree(r"C:\Users\Rodrigo\PycharmProjects\simulador-resgate\VictimSim-main\datasets\sinais_vitais.txt")
+        self.tree = DecisionTree("/Users/lucasbarszcz/PycharmProjects/simulador-resgate/VictimSim-main/datasets/sinais_vitais.txt")
         self.pessoasClustering = []
         self.nome_arquivo = ""
         self.salvas = []

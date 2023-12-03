@@ -4,18 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="Finalizado, falta revisar em grupo">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/simulador-resgate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/simulador-resgate.iml" afterDir="false" />
+    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="FINALIZADO DE VERDADE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/explorer_config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/rescuer_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/datasets/data_20x20_42vic/rescuer_config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/environment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/explorer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/explorer_drawn_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/explorer_drawn_map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 1" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 10" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 10" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 11" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 11" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 12" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 13" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 13" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 14" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 14" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 15" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 15" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 16" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 16" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 2" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 3" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 4" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 5" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 6" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 7" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 8" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster 9" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster 9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/cluster4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/cluster4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VictimSim-main/rescuer.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/rescuer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/rescuer_issues.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/rescuer_issues.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +66,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;tarefa2__fernando&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tarefa2__FINAL&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Rodrigo&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;

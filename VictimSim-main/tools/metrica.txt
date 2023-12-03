@@ -1,0 +1,9 @@
+------------------------------------------------------------
+GENERAL METRICS
+
+Reference dataset: file_target.txt Length: 225
+Predict          : file_predict.txt Length: 40
+Matching rows    : 0
+
+------------------------------------------------------------
+REGRESSOR METRICS

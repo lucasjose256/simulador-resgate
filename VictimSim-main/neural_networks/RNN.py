@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from keras.models import Sequential
 from keras.layers import SimpleRNN, Dense
 from sklearn.metrics import mean_squared_error
@@ -14,7 +14,8 @@ features = train_data[['qPA', 'pulso', 'freq_resp']].values
 labels = train_data['gravidade'].values
 
 # Normalizar os dados
-scaler = MinMaxScaler()
+#scaler = MinMaxScaler()
+scaler = StandardScaler()
 features_scaled = scaler.fit_transform(features)
 
 # Criar modelo da RNN
@@ -32,7 +33,7 @@ for train_index, val_index in kfold.split(features_scaled):
     y_train, y_val = labels[train_index], labels[val_index]
 
     # Treinar o modelo
-    model.fit(X_train.reshape(X_train.shape[0], X_train.shape[1], 1), y_train, epochs=10, batch_size=32, verbose=1)
+    model.fit(X_train.reshape(X_train.shape[0], X_train.shape[1], 1), y_train, epochs=100, batch_size=32, verbose=1)
 
     # Avaliar o modelo
     val_loss = model.evaluate(X_val.reshape(X_val.shape[0], X_val.shape[1], 1), y_val, verbose=0)
@@ -53,6 +54,8 @@ predicted_gravity = model.predict(test_features_scaled.reshape(test_features_sca
 
 rmse = np.sqrt(mean_squared_error(y_test, predicted_gravity))
 print(f'Root Mean Squared Error (RMSE): {rmse}')
+
+np.savetxt('gravidade_predita.csv', predicted_gravity, delimiter=',', fmt='%.6f')
 
 # Adicionar os resultados ao DataFrame de teste
 test_data['gravidade_predita'] = predicted_gravity

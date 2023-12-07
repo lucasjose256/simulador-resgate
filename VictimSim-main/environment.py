@@ -79,7 +79,7 @@ class Env:
         self.nb_of_victims = len(self.victims)
 
         # Load the vital signals of the victims
-        vs_file = os.path.join(self.data_folder,"sinais_vitais.txt")
+        vs_file = os.path.join(self.data_folder,"dados_treinamento.txt")
         
         with open(vs_file, 'r') as csvfile:
             csvreader = csv.reader(csvfile)

@@ -40,7 +40,7 @@ class GravidadeCalculator:
         df.to_csv('updated_dataRNN.csv', index=False)
 
 # Load your CSV data
-csv_path = r"C:\Users\Rodrigo\PycharmProjects\simulador-resgate\VictimSim-main\neural_networks\datasetCompare.csv"  # Replace with the actual path to your CSV file
+csv_path = r"\Users\lucasbarszcz\PycharmProjects\simulador-resgate\VictimSim-main\neural_networks\datasetCompare.csv"  # Replace with the actual path to your CSV file
 df = pd.read_csv(csv_path)
 
 # Extract relevant columns (4th, 5th, 6th)

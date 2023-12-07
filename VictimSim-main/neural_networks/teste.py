@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from keras.models import Sequential
 from keras.layers import Dense
 
-pasta = r"C:\Users\Rodrigo\PycharmProjects\simulador-resgate\VictimSim-main\neural_networks\dataset.csv"
+pasta = r"/Users/lucasbarszcz/PycharmProjects/simulador-resgate/VictimSim-main/neural_networks/dataset.csv"
 df = pd.read_csv(pasta)
 X = df.iloc[:, 3:6].values
 y = df.iloc[:, 6].values
@@ -24,7 +24,7 @@ for train_index, test_index in kf.split(X):
     model.add(Dense(units=32, activation='relu'))
     model.add(Dense(units=1, activation='linear'))
     model.compile(optimizer='adam', loss='mean_squared_error')
-    model.fit(X_train, y_train, epochs=20000, batch_size=32, validation_data=(X_test, y_test))
+    model.fit(X_train, y_train, epochs=6000, batch_size=32, validation_data=(X_test, y_test))
 
     mse = model.evaluate(X_test, y_test)
     print(f'Squared error: {mse}')

@@ -25,6 +25,10 @@ model.add(Dense(units=1, activation='linear'))
 
 # Compilar o modelo
 model.compile(optimizer='adam', loss='mean_squared_error')
+# Valores padrão do otimizador Adam
+#learning_rate_default = 0.001
+#momentum_default = 0.9
+#momentum_default2 = 0.999
 
 # Realizar K-fold cross-validation
 kfold = KFold(n_splits=5, shuffle=True, random_state=42)

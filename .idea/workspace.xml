@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="Início">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/simulador-resgate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/simulador-resgate.iml" afterDir="false" />
+    <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="Algoritmo RNN meio-finalizado e RMSE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VictimSim-main/neural_networks/RNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/RNN.py" afterDir="false" />
     </list>
@@ -59,7 +57,28 @@
       <recent name="C:\Users\ferna\Documents\Faculdade\6º Período\Sistemas Inteligentes\Tarefa 1 - Busca Exploratória x Explotação\simulador-resgate\VictimSim-main\neural_networks" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.RNN (1)">
+  <component name="RunManager" selected="Python.RMSE">
+    <configuration name="RMSE" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="simulador-resgate" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main/neural_networks" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/neural_networks/RMSE.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="RNN (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="simulador-resgate" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -81,7 +100,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="calculate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="explorer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="simulador-resgate" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -89,11 +108,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main/neural_networks" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/neural_networks/calculate.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/explorer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -102,7 +121,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="calculateRNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="simulador-resgate" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -110,32 +129,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main/neural_networks" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/neural_networks/calculateRNN.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="feedforward" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="simulador-resgate" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main/neural_networks" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/neural_networks/feedforward.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -167,19 +165,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.calculate" />
-      <item itemvalue="Python.calculateRNN" />
-      <item itemvalue="Python.feedforward" />
+      <item itemvalue="Python.RMSE" />
+      <item itemvalue="Python.explorer" />
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.RNN (1)" />
       <item itemvalue="Python.teste" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.RMSE" />
         <item itemvalue="Python.RNN (1)" />
-        <item itemvalue="Python.calculate" />
-        <item itemvalue="Python.calculateRNN" />
-        <item itemvalue="Python.feedforward" />
         <item itemvalue="Python.teste" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.explorer" />
       </list>
     </recent_temporary>
   </component>
@@ -457,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701792651062</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Algoritmo RNN meio-finalizado e RMSE">
+      <option name="closed" value="true" />
+      <created>1701960363469</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1701960363469</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,6 +527,7 @@
     <MESSAGE value="Finalizado, falta revisar em grupo" />
     <MESSAGE value="Início Tarefa 3" />
     <MESSAGE value="Início" />
-    <option name="LAST_COMMIT_MESSAGE" value="Início" />
+    <MESSAGE value="Algoritmo RNN meio-finalizado e RMSE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Algoritmo RNN meio-finalizado e RMSE" />
   </component>
 </project>

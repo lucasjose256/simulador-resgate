@@ -19,6 +19,6 @@ class CSVColumnExtractor:
         result_df.to_csv(self.output_csv_path, index=False)
 
 # Example usage:
-csv_path = r"C:\Users\Rodrigo\PycharmProjects\simulador-resgate\VictimSim-main\neural_networks\rede1resultado.csv"  # Replace with the actual path to your CSV file
+csv_path = r"C:\Users\Rodrigo\PycharmProjects\simulador-resgate\VictimSim-main\neural_networks\updated_dataset.csv"  # Replace with the actual path to your CSV file
 extractor = CSVColumnExtractor(csv_path)
 extractor.extract_6th_column()

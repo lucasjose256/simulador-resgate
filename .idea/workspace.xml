@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f031ccc-32f9-4fbf-a7e4-63ee7083fde7" name="Changes" comment="F">
-      <change afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/calculateREDE3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/rede3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/neural_networks/calculate.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/calculateREDE2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/neural_networks/calculateRNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/calculateREDE1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/neural_networks/feedforward.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/rede1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VictimSim-main/neural_networks/teste.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/rede2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/neural_networks/calculateREDE3.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/calculateREDE3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/neural_networks/cs.py" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/cs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/neural_networks/sinais_vitais_teste.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/sinais_vitais_teste.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VictimSim-main/neural_networks/updated_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/VictimSim-main/neural_networks/updated_data.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="tarefa2_fernando" />
+        <entry key="$PROJECT_DIR$" value="tarefa3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,16 +45,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Rodrigo/Desktop/udppy",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rodrigo/Desktop/udppy&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.rede3">
+}</component>
+  <component name="RunManager" selected="Python.cs">
     <configuration name="calculateREDE1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="simulador-resgate" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,9 +83,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\Rodrigo\AppData\Local\Programs\Python\Python311\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main/neural_networks" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/neural_networks/calculateREDE3.py" />
@@ -106,9 +104,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\Rodrigo\AppData\Local\Programs\Python\Python311\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/VictimSim-main/neural_networks" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VictimSim-main/neural_networks/cs.py" />
@@ -164,11 +162,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.rede3" />
         <item itemvalue="Python.cs" />
+        <item itemvalue="Python.calculateREDE3" />
+        <item itemvalue="Python.rede3" />
         <item itemvalue="Python.calculateREDE1" />
         <item itemvalue="Python.csvzero" />
-        <item itemvalue="Python.calculateREDE3" />
       </list>
     </recent_temporary>
   </component>
@@ -421,7 +419,21 @@
       <option name="project" value="LOCAL" />
       <updated>1701911248055</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="F">
+      <created>1702525493639</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1702525493639</updated>
+    </task>
+    <task id="LOCAL-00035" summary="F">
+      <created>1702525527579</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1702525527579</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

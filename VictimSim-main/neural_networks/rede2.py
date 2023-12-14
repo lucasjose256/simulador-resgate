@@ -24,10 +24,10 @@ for train_index, test_index in kf.split(X):
     model.add(Dense(units=32, activation='relu'))
     model.add(Dense(units=1, activation='linear'))
     model.compile(optimizer='adam', loss='mean_squared_error')
-    model.fit(X_train, y_train, epochs=20000, batch_size=32, validation_data=(X_test, y_test))
+    model.fit(X_train, y_train, epochs=4000, batch_size=32, validation_data=(X_test, y_test))
 
     mse = model.evaluate(X_test, y_test)
     print(f'Squared error: {mse}')
 
 
-model.save('gravidade_model_cross_val.h5')
+model.save('gravidade_model_rede2.h5')

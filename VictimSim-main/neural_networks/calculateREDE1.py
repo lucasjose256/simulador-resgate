@@ -36,18 +36,15 @@ class GravidadeCalculator:
 
                 df.at[index, df.columns[6]] = gravidade
 
-
         df.to_csv('rede1resultado.csv', index=False)
 
 
-csv_path = r"C:\Users\Rodrigo\PycharmProjects\simulador-resgate\VictimSim-main\neural_networks\sinais_vitais_teste.txt"  # Replace with the actual path to your CSV file
+csv_path = str(input("Digite o nome do arquivo para o teste: "))
 df = pd.read_csv(csv_path)
-
 
 X_train = df.iloc[:, 3:6].values
 
 calculator = GravidadeCalculator('gravidade_model_rede1.h5')
-
 
 calculator.train_scaler(X_train)
 

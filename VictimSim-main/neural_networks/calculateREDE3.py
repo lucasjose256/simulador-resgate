@@ -24,21 +24,15 @@ class GravidadeCalculator:
 
         return df
 
-# Load your CSV data
-csv_path = r"C:\Users\Rodrigo\PycharmProjects\simulador-resgate\VictimSim-main\neural_networks\sinais_vitais_teste.txt"
+csv_path = str(input("Digite o nome do arquivo para o teste: "))
 df = pd.read_csv(csv_path)
 
-# Extract relevant columns (4th, 5th, 6th)
 X_train = df.iloc[:, 3:6].values
 
-# Create an instance of GravidadeCalculator
 calculator = GravidadeCalculator('gravidade_model_rede3.h5')
 
-# Train the scaler
 calculator.train_scaler(X_train)
 
-# Apply the formula to the DataFrame
 result_df = calculator.apply_formula_to_dataframe(df)
 
-# Save the updated DataFrame to a new CSV file
-result_df.to_csv('updated_dataset.csv', index=False)
+result_df.to_csv('rede3resultado.csv', index=False)
